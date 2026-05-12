@@ -55,7 +55,7 @@ function renderSingleTable(items, container, typeLabel) {
                     <th style="width: 80px;">구분</th>
                     <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
                     ${typeLabel === '조사' ? '<th style="width: 120px;">성별/연령</th>' : ''}
-                    <th>${typeLabel === '경사' ? '결혼식 일시' : '별세일'}</th>
+                    <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
                     <th>장소</th>
                     <th style="width: 120px;">관계</th>
                 </tr>
@@ -63,7 +63,12 @@ function renderSingleTable(items, container, typeLabel) {
             <tbody>
     `;
 
+    let globalIndex = 1; // 1부터 순차적으로 증가하는 번호
+
     sortedMonths.forEach(month => {
+        // Extract only the month part for the "구분" column
+        const monthOnly = month.split(' ')[1] || month; 
+
         tableHtml += `
             <tr class="month-divider">
                 <td colspan="${typeLabel === '조사' ? 7 : 6}">${month}</td>
@@ -73,8 +78,8 @@ function renderSingleTable(items, container, typeLabel) {
         groups[month].forEach(item => {
             tableHtml += `
                 <tr onclick="showDetail(${item.id})">
-                    <td>${item.id}</td>
-                    <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#0064FF' : '#4E5968'};">${item.typeLabel}</td>
+                    <td style="text-align: center;">${globalIndex++}</td>
+                    <td style="font-weight: 600; color: var(--toss-text-main); text-align: center;">${monthOnly}</td>
                     <td style="font-weight: 600; color: var(--toss-text-main);">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
                     ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
                     <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
@@ -102,7 +107,7 @@ function showDetail(id) {
                 <h2 class="card-name">${item.groom} ♡ ${item.bride}</h2>
                 <div style="margin-bottom: 32px;">
                     <span class="info-label">유형</span>
-                    <span class="info-value" style="color: var(--toss-blue);">${item.typeLabel} | ${item.relation}</span>
+                    <span class="info-value" style="color: var(--toss-blue);">결혼 | ${item.relation}</span>
                 </div>
                 <div>
                     <span class="info-label">일시</span>
@@ -120,7 +125,7 @@ function showDetail(id) {
                 <h2 class="card-name">${item.name}</h2>
                 <div style="margin-bottom: 32px;">
                     <span class="info-label">유형</span>
-                    <span class="info-value">${item.typeLabel} | ${item.genderAge} | ${item.relation}</span>
+                    <span class="info-value">부고 | ${item.genderAge} | ${item.relation}</span>
                 </div>
                 <div>
                     <span class="info-label">별세일</span>
