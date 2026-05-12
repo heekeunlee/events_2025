@@ -12,11 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-    `,o=1;i.forEach(e=>{let t=e.split(` `)[1]||e;a+=`
-            <tr class="month-divider">
-                <td colspan="${n===`조사`?7:6}">${e}</td>
-            </tr>
-        `,r[e].forEach(e=>{a+=`
+    `,o=1;i.forEach(e=>{let t=e.split(` `)[1]||e;r[e].forEach(e=>{a+=`
                 <tr onclick="showDetail(${e.id})">
                     <td style="text-align: center;">${o++}</td>
                     <td style="font-weight: 600; color: var(--toss-text-main); text-align: center;">${t}</td>
