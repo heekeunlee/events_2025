@@ -22,7 +22,7 @@
                     ${e.type===`obituary`?`<td>${e.genderAge}</td>`:``}
                     <td>${e.type===`wedding`?e.dateTime:e.diedDate}</td>
                     <td>${e.type===`wedding`?e.location:e.place}</td>
-                    <td style="color: var(--toss-blue); font-weight: 600;">${e.relation||`-`}</td>
+                    <td style="font-weight: 600;">${e.relation||`-`}</td>
                     <td style="text-align: center;">${n}</td>
                     <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${i}</td>
                 </tr>
