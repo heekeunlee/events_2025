@@ -108,5 +108,104 @@
     "genderAge": "여, 43세",
     "family": "배우자 이상일 / 딸 이서아 / 아들 이서준",
     "burialPlace": "수원연화장 추모의집"
+  },
+  {
+    "id": 11,
+    "category": "외부 빈소",
+    "diedDate": "2025-03-05 23:00",
+    "funeralDate": "2025-03-08 07:00",
+    "place": "나주애항장례식장 202호",
+    "name": "故 강남원",
+    "genderAge": "남, 향년 67세",
+    "family": "아들 강성준",
+    "burialPlace": "강씨묘 선산"
+  },
+  {
+    "id": 12,
+    "category": "외부 빈소",
+    "diedDate": "2025-04-25 20:00",
+    "funeralDate": "2025-04-28 08:00",
+    "place": "서울대학교병원장례식장 8호실",
+    "name": "故 우일랑",
+    "genderAge": "남, 향년 87세",
+    "family": "딸 우영선 / 손자 한재완 등",
+    "burialPlace": "서울시립승화원"
+  },
+  {
+    "id": 13,
+    "category": "외부 빈소",
+    "diedDate": "2025-08-02",
+    "funeralDate": "2025-08-04 11:00",
+    "place": "국민건강보험공단 일산병원 장례식장 2호실",
+    "name": "故 한지훈",
+    "genderAge": "남, 41세",
+    "family": "부 한원섭 / 모 김창희 / 동생 한정선 등",
+    "burialPlace": "서울시립승화원"
+  },
+  {
+    "id": 14,
+    "category": "외부 빈소",
+    "diedDate": "2025-08-12",
+    "funeralDate": "2025-09-15 09:30",
+    "place": "보훈공단 중앙보훈병원 장례식장 2층5호",
+    "name": "故 한윤기",
+    "genderAge": "남, 91세",
+    "family": "배우자 이영선 / 딸 한영신·한영화 등",
+    "burialPlace": "성남시장례문화사업소 -> 국립이천호국원"
+  },
+  {
+    "id": 15,
+    "category": "외부 빈소",
+    "diedDate": "2025-09-23 13:30",
+    "funeralDate": "2025-09-25 11:30",
+    "place": "배성병원장례식장 1층 대특실",
+    "name": "故 남종수",
+    "genderAge": "남, 향년 85세",
+    "family": "딸 남진혜 / 손자 김상웅",
+    "burialPlace": "명복공원"
+  },
+  {
+    "id": 16,
+    "category": "외부 빈소",
+    "diedDate": "2025-10-20",
+    "funeralDate": "2025-10-23 09:00",
+    "place": "삼성서울병원장례식장 19호실",
+    "name": "故 양명자",
+    "genderAge": "연령 미기재",
+    "family": "상주 김대영 / 며느리 김경애 / 딸 김은영 등",
+    "burialPlace": "성남장례문화사업소"
+  },
+  {
+    "id": 17,
+    "category": "외부 빈소",
+    "diedDate": "2025-11-09",
+    "funeralDate": "2025-11-12 09:00",
+    "place": "의정부 을지대학교병원장례식장 6호실",
+    "name": "故 신강흥",
+    "genderAge": "향년 82세",
+    "family": "딸 신정아 / 아들 신광호·신기호",
+    "burialPlace": "납골당/봉안당"
+  },
+  {
+    "id": 18,
+    "category": "외부 빈소",
+    "diedDate": "2025-11-13 19:35",
+    "funeralDate": "2025-11-15 05:30",
+    "place": "쉴낙원 지하3호실",
+    "name": "故 박형남",
+    "genderAge": "여, 향년 70세",
+    "family": "딸 최선화·최화성·최화옥·최화영",
+    "burialPlace": "인천가족공원 -> 광명메모리얼파크"
+  },
+  {
+    "id": 19,
+    "category": "외부 빈소",
+    "diedDate": "2025-11-25",
+    "funeralDate": "2025-11-27 07:00",
+    "place": "구례산림조합장례식장 / 구례장례식장",
+    "name": "故 박춘자",
+    "genderAge": "연령 미기재",
+    "family": "딸 심영숙·심경희·심정은·심육남 / 아들 심상실·심성섭·심상설 등",
+    "burialPlace": "전남 구례군 마산면 황전리"
   }
 ]
