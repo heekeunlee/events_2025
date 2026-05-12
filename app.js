@@ -96,7 +96,7 @@ function renderSingleTable(items, container, typeLabel) {
                     ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
                     <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
                     <td>${item.type === 'wedding' ? item.location : item.place}</td>
-                    <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
+                    <td style="font-weight: 600;">${item.relation || '-'}</td>
                     <td style="text-align: center;">${attachmentHtml}</td>
                     <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${amount}</td>
                 </tr>

@@ -46,6 +46,14 @@ h1 {
     font-weight: 800;
 }
 
+.header-subtext {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--toss-text-muted);
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
 .print-button {
     background-color: var(--toss-blue);
     color: white;
