@@ -2,14 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 수원연화장 부고 기록</title>
-    <meta name="description" content="2025년 수원연화장 부고 내역을 확인하실 수 있는 웹 기록장입니다.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/events_2025/assets/index-CF2Iq6p0.js"></script>
-  <link rel="stylesheet" crossorigin href="/events_2025/assets/index-DQh6Zf8T.css">
+    <meta name="viewport" content="width=1200"> <!-- Force PC width on mobile as per user request -->
+    <title>2025년 경조사 기록</title>
+  <script type="module" crossorigin src="/events_2025/assets/index-DEzEYm1W.js"></script>
+  <link rel="stylesheet" crossorigin href="/events_2025/assets/index-lJjdpICI.css">
 </head>
 <body>
     <div id="app">
@@ -22,33 +18,32 @@
         <main class="container">
             <section id="wedding-section">
                 <h2 class="section-title">✨ 경사 (결혼식)</h2>
-                <div id="wedding-container">
-                    <!-- Monthly tables for weddings will be injected here -->
+                <div id="wedding-container" class="main-card">
+                    <!-- Single consolidated table for weddings will be injected here -->
                 </div>
             </section>
 
             <section id="obituary-section">
                 <h2 class="section-title">🕯️ 조사 (장례식)</h2>
-                <div id="obituary-container">
-                    <!-- Monthly tables for obituaries will be injected here -->
+                <div id="obituary-container" class="main-card">
+                    <!-- Single consolidated table for obituaries will be injected here -->
                 </div>
             </section>
         </main>
 
         <footer>
             <div class="container">
-                <p>&copy; 2025 Events Archive. All rights reserved.</p>
+                <p>&copy; 2025 경조사 기록부. All rights reserved.</p>
             </div>
         </footer>
-    </div>
 
-    <!-- Modal for details -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="modal-body"></div>
+        <!-- Detail Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="modal-body"></div>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
