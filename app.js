@@ -20,17 +20,18 @@ function renderSections(data) {
     const weddings = data.filter(item => item.type === 'wedding');
     const obituaries = data.filter(item => item.type === 'obituary');
     
-    renderMonthlyTables(weddings, weddingContainer, '경사');
-    renderMonthlyTables(obituaries, obituaryContainer, '조사');
+    renderSingleTable(weddings, weddingContainer, '경사');
+    renderSingleTable(obituaries, obituaryContainer, '조사');
 }
 
-function renderMonthlyTables(items, container, typeLabel) {
+function renderSingleTable(items, container, typeLabel) {
     if (!container) return;
     if (items.length === 0) {
         container.innerHTML = '<p style="padding: 20px; color: #8B95A1;">데이터가 없습니다.</p>';
         return;
     }
 
+    // Group by month to insert dividers later
     const groups = {};
     items.forEach(item => {
         const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
@@ -48,39 +49,55 @@ function renderMonthlyTables(items, container, typeLabel) {
         return (parseInt(aVal[1]) * 100 + parseInt(aVal[2])) - (parseInt(bVal[1]) * 100 + parseInt(bVal[2]));
     });
 
-    container.innerHTML = sortedMonths.map(month => `
+    let tableHtml = `
         <div class="month-group">
-            <h3 class="month-title">${month}</h3>
             <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th style="width: 50px;">No</th>
-                            <th style="width: 70px;">구분</th>
+                            <th style="width: 40px;">No</th>
+                            <th style="width: 60px;">구분</th>
                             <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
-                            ${typeLabel === '조사' ? '<th style="width: 100px;">성별/연령</th>' : ''}
-                            <th>${typeLabel === '경사' ? '결혼식 일시' : '별세일'}</th>
-                            <th>${typeLabel === '경사' ? '장소' : '장례식장/빈소'}</th>
-                            <th style="width: 100px;">관계</th>
+                            ${typeLabel === '조사' ? '<th style="width: 80px;">성별/연령</th>' : ''}
+                            <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
+                            <th>장소</th>
+                            <th style="width: 80px;">관계</th>
                         </tr>
                     </thead>
                     <tbody>
-                        ${groups[month].map(item => `
-                            <tr onclick="showDetail(${item.id})">
-                                <td>${item.id}</td>
-                                <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#0064FF' : '#4E5968'};">${item.typeLabel}</td>
-                                <td style="font-weight: 600; color: var(--toss-text-main);">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
-                                ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
-                                <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
-                                <td>${item.type === 'wedding' ? item.location : item.place}</td>
-                                <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
-                            </tr>
-                        `).join('')}
+    `;
+
+    sortedMonths.forEach(month => {
+        // Month divider row
+        tableHtml += `
+            <tr class="month-divider">
+                <td colspan="${typeLabel === '조사' ? 7 : 6}">${month}</td>
+            </tr>
+        `;
+
+        groups[month].forEach(item => {
+            tableHtml += `
+                <tr onclick="showDetail(${item.id})">
+                    <td>${item.id}</td>
+                    <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#0064FF' : '#4E5968'};">${item.typeLabel}</td>
+                    <td style="font-weight: 600; color: var(--toss-text-main);">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
+                    ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
+                    <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
+                    <td>${item.type === 'wedding' ? item.location : item.place}</td>
+                    <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
+                </tr>
+            `;
+        });
+    });
+
+    tableHtml += `
                     </tbody>
                 </table>
             </div>
         </div>
-    `).join('');
+    `;
+
+    container.innerHTML = tableHtml;
 }
 
 function showDetail(id) {

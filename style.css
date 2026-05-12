@@ -33,183 +33,120 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--toss-bg);
     color: var(--toss-text-main);
-    line-height: 1.5;
-    padding-bottom: 100px;
+    line-height: 1.4;
+    padding-bottom: 60px;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 20px;
 }
 
 header {
-    padding: 60px 0 40px;
-    text-align: left;
+    padding: 40px 0 20px;
 }
 
 h1 {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 800;
-    margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
 
 .section-title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
-    margin: 60px 0 24px;
-    color: var(--toss-text-main);
+    margin: 40px 0 16px;
 }
 
 .month-group {
     background-color: var(--toss-card);
-    border-radius: 24px;
-    padding: 24px;
-    margin-bottom: 32px;
+    border-radius: 20px;
+    padding: 12px;
+    margin-bottom: 24px;
     box-shadow: var(--toss-shadow);
-}
-
-.month-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--toss-blue);
-    display: flex;
-    align-items: center;
+    overflow: hidden;
 }
 
 .table-responsive {
     width: 100%;
-    overflow-x: auto; /* Allow horizontal scroll for mobile to keep PC feel */
-    border-radius: 12px;
+    /* No horizontal scroll as per user request */
 }
 
 table {
     width: 100%;
-    min-width: 800px; /* Force minimum width to maintain PC layout on mobile */
     border-collapse: collapse;
-    text-align: left;
+    table-layout: fixed; /* Keep PC look with fixed column widths */
 }
 
 th {
-    padding: 12px 16px;
+    padding: 10px 8px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 11px;
     color: var(--toss-text-muted);
     border-bottom: 1px solid var(--toss-border);
-    white-space: nowrap;
+    text-align: left;
 }
 
 td {
-    padding: 16px;
-    font-size: 15px;
+    padding: 12px 8px;
+    font-size: 12px;
     color: var(--toss-text-sub);
     border-bottom: 1px solid var(--toss-border);
-    transition: var(--transition);
+    word-break: keep-all; /* Prevent awkward breaks */
+    overflow-wrap: break-word;
 }
 
-tr {
-    cursor: pointer;
-}
-
-tr:last-child td {
-    border-bottom: none;
+/* Month Divider Row */
+.month-divider td {
+    background-color: rgba(0, 100, 255, 0.05);
+    color: var(--toss-blue);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(0, 100, 255, 0.1);
 }
 
 tr:hover td {
     background-color: var(--toss-bg);
 }
 
-footer {
-    margin-top: 80px;
-    padding: 40px 0;
-    text-align: center;
-    color: var(--toss-text-muted);
-    font-size: 13px;
-}
-
-/* Modal Styles - Toss Style */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-}
-
+/* Modal Styles */
 .modal-content {
     background-color: var(--toss-card);
-    margin: 15vh auto;
-    padding: 40px;
-    border-radius: 32px;
-    max-width: 500px;
+    margin: 10vh auto;
+    padding: 32px;
+    border-radius: 24px;
+    max-width: 450px;
     width: 90%;
     position: relative;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-    animation: modalSlideUp 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
-@keyframes modalSlideUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.close-button {
-    position: absolute;
-    right: 24px;
-    top: 24px;
-    font-size: 24px;
-    color: var(--toss-text-muted);
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--toss-bg);
+.card-name {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .info-label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     color: var(--toss-text-muted);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     display: block;
 }
 
 .info-value {
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--toss-text-main);
-    display: block;
-    margin-bottom: 24px;
-}
-
-.card-name {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
-}
-
-.card-date {
     font-size: 15px;
-    color: var(--toss-text-sub);
+    margin-bottom: 16px;
 }
 
-/* Mobile PC View Hint */
 @media (max-width: 768px) {
-    h1 { font-size: 28px; }
-    .container { padding: 0 16px; }
-    .month-group { padding: 16px; border-radius: 20px; }
-    .table-responsive {
-        margin: 0 -16px;
-        padding: 0 16px;
-        width: calc(100% + 32px);
-    }
+    body { padding-bottom: 40px; }
+    h1 { font-size: 24px; }
+    .container { padding: 0 12px; }
+    .month-group { padding: 8px; }
+    td, th { padding: 8px 4px; font-size: 10px; }
+    .month-divider td { font-size: 11px; }
 }
