@@ -7,19 +7,6 @@
     --toss-text-muted: #8B95A1;
     --toss-border: #E5E8EB;
     --toss-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    --transition: all 0.2s ease-in-out;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --toss-bg: #101012;
-        --toss-card: #1C1C1E;
-        --toss-text-main: #F9FAFB;
-        --toss-text-sub: #ADBBC9;
-        --toss-text-muted: #6B7684;
-        --toss-border: #2C2C2E;
-        --toss-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    }
 }
 
 * {
@@ -33,120 +20,124 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, Roboto, "Helvetica Neue", Arial, sans-serif;
     background-color: var(--toss-bg);
     color: var(--toss-text-main);
-    line-height: 1.4;
-    padding-bottom: 60px;
+    line-height: 1.5;
+    padding-bottom: 80px;
+    min-width: 1200px; /* Force PC width */
 }
 
 .container {
-    max-width: 1200px;
+    width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 header {
-    padding: 40px 0 20px;
+    padding: 60px 0 20px;
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 800;
-    letter-spacing: -0.5px;
 }
 
 .section-title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
-    margin: 40px 0 16px;
+    margin: 60px 0 20px;
 }
 
-.month-group {
+.main-card {
     background-color: var(--toss-card);
-    border-radius: 20px;
-    padding: 12px;
-    margin-bottom: 24px;
+    border-radius: 24px;
+    padding: 20px;
     box-shadow: var(--toss-shadow);
-    overflow: hidden;
-}
-
-.table-responsive {
-    width: 100%;
-    /* No horizontal scroll as per user request */
+    margin-bottom: 40px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Keep PC look with fixed column widths */
 }
 
 th {
-    padding: 10px 8px;
+    padding: 16px 12px;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 13px;
     color: var(--toss-text-muted);
     border-bottom: 1px solid var(--toss-border);
     text-align: left;
 }
 
 td {
-    padding: 12px 8px;
-    font-size: 12px;
+    padding: 16px 12px;
+    font-size: 15px;
     color: var(--toss-text-sub);
     border-bottom: 1px solid var(--toss-border);
-    word-break: keep-all; /* Prevent awkward breaks */
-    overflow-wrap: break-word;
 }
 
 /* Month Divider Row */
 .month-divider td {
-    background-color: rgba(0, 100, 255, 0.05);
+    background-color: rgba(0, 100, 255, 0.04);
     color: var(--toss-blue);
     font-weight: 700;
-    font-size: 13px;
-    padding: 8px 12px;
+    font-size: 16px;
+    padding: 12px 20px;
     border-bottom: 1px solid rgba(0, 100, 255, 0.1);
 }
 
 tr:hover td {
     background-color: var(--toss-bg);
+    cursor: pointer;
 }
 
 /* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+}
+
 .modal-content {
     background-color: var(--toss-card);
-    margin: 10vh auto;
-    padding: 32px;
-    border-radius: 24px;
-    max-width: 450px;
-    width: 90%;
+    margin: 100px auto;
+    padding: 48px;
+    border-radius: 32px;
+    max-width: 600px;
     position: relative;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
-.card-name {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
+.close-button {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    font-size: 28px;
+    color: var(--toss-text-muted);
+    cursor: pointer;
 }
 
 .info-label {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--toss-text-muted);
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     display: block;
 }
 
 .info-value {
-    font-size: 15px;
-    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 24px;
 }
 
-@media (max-width: 768px) {
-    body { padding-bottom: 40px; }
-    h1 { font-size: 24px; }
-    .container { padding: 0 12px; }
-    .month-group { padding: 8px; }
-    td, th { padding: 8px 4px; font-size: 10px; }
-    .month-divider td { font-size: 11px; }
+.card-name {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
 }

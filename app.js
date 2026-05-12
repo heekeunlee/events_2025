@@ -31,13 +31,11 @@ function renderSingleTable(items, container, typeLabel) {
         return;
     }
 
-    // Group by month to insert dividers later
     const groups = {};
     items.forEach(item => {
         const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
         const match = dateStr.match(/(\d{4})[-년]\s*(\d{1,2})/);
         const month = match ? `${match[1]}년 ${parseInt(match[2])}월` : '기타';
-        
         if (!groups[month]) groups[month] = [];
         groups[month].push(item);
     });
@@ -50,25 +48,22 @@ function renderSingleTable(items, container, typeLabel) {
     });
 
     let tableHtml = `
-        <div class="month-group">
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 40px;">No</th>
-                            <th style="width: 60px;">구분</th>
-                            <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
-                            ${typeLabel === '조사' ? '<th style="width: 80px;">성별/연령</th>' : ''}
-                            <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
-                            <th>장소</th>
-                            <th style="width: 80px;">관계</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 50px;">No</th>
+                    <th style="width: 80px;">구분</th>
+                    <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
+                    ${typeLabel === '조사' ? '<th style="width: 120px;">성별/연령</th>' : ''}
+                    <th>${typeLabel === '경사' ? '결혼식 일시' : '별세일'}</th>
+                    <th>장소</th>
+                    <th style="width: 120px;">관계</th>
+                </tr>
+            </thead>
+            <tbody>
     `;
 
     sortedMonths.forEach(month => {
-        // Month divider row
         tableHtml += `
             <tr class="month-divider">
                 <td colspan="${typeLabel === '조사' ? 7 : 6}">${month}</td>
@@ -90,13 +85,7 @@ function renderSingleTable(items, container, typeLabel) {
         });
     });
 
-    tableHtml += `
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `;
-
+    tableHtml += `</tbody></table>`;
     container.innerHTML = tableHtml;
 }
 
