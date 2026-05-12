@@ -94,18 +94,17 @@ table {
     border-collapse: collapse;
 }
 
-th {
+th, td {
     padding: 16px 12px;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 15px;
     color: var(--toss-text-muted);
     border-bottom: 1px solid var(--toss-border);
     text-align: left;
+    white-space: nowrap;
 }
 
 td {
-    padding: 16px 12px;
-    font-size: 15px;
     color: var(--toss-text-sub);
     border-bottom: 1px solid var(--toss-border);
 }
@@ -215,6 +214,43 @@ tr:hover td {
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+/* Summary Cards */
+.total-summary-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-label {
+    display: block;
+    font-size: 17px;
+    color: var(--toss-text-muted);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.summary-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--toss-blue);
+}
+
+.table-footer-row td {
+    background-color: #F9FAFB;
+    border-bottom: none;
+    padding: 20px 16px;
+}
+
 /* Print Optimization */
 @media print {
     body {
@@ -229,10 +265,15 @@ tr:hover td {
     .print-button, .close-button, .close-image-button, .modal, .attachment-icon {
         display: none !important;
     }
-    .main-card {
+    .main-card, .total-summary-card {
         box-shadow: none;
         border: none;
         padding: 0;
+    }
+    .total-summary-card {
+        margin-top: 20px;
+        border-top: 2px solid #eee;
+        padding-top: 20px;
     }
     header {
         padding: 20px 0;
@@ -245,6 +286,10 @@ tr:hover td {
         font-size: 12px;
     }
     .month-divider td {
+        background-color: #f8f9fa !important;
+        -webkit-print-color-adjust: exact;
+    }
+    .table-footer-row td {
         background-color: #f8f9fa !important;
         -webkit-print-color-adjust: exact;
     }

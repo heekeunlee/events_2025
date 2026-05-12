@@ -22,15 +22,21 @@ function renderSections(data) {
     
     renderSingleTable(weddings, weddingContainer, '경사');
     renderSingleTable(obituaries, obituaryContainer, '조사');
+    
+    renderTotalSummary(data);
 }
 
-function getAmount(relation) {
-    if (!relation) return '-';
+function getAmountValue(relation) {
+    if (!relation) return 100000;
     const rel = relation.trim();
-    if (rel.includes('친척')) return '300,000';
-    if (rel.includes('직장 동료') || rel.includes('교회 지인')) return '150,000';
-    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) return '100,000';
-    return '100,000'; // 기본값
+    if (rel.includes('친척')) return 300000;
+    if (rel.includes('직장 동료') || rel.includes('교회 지인')) return 150000;
+    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) return 100000;
+    return 100000;
+}
+
+function formatNumber(num) {
+    return num.toLocaleString();
 }
 
 function renderSingleTable(items, container, typeLabel) {
@@ -41,12 +47,15 @@ function renderSingleTable(items, container, typeLabel) {
     }
 
     const groups = {};
+    let tableTotal = 0;
+
     items.forEach(item => {
         const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
         const match = dateStr.match(/(\d{4})[-년]\s*(\d{1,2})/);
         const month = match ? `${match[1]}년 ${parseInt(match[2])}월` : '기타';
         if (!groups[month]) groups[month] = [];
         groups[month].push(item);
+        tableTotal += getAmountValue(item.relation);
     });
 
     const sortedMonths = Object.keys(groups).sort((a, b) => {
@@ -86,7 +95,7 @@ function renderSingleTable(items, container, typeLabel) {
                 ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="이미지 보기">📎</span>` 
                 : '-';
             
-            const amount = getAmount(item.relation);
+            const amountVal = getAmountValue(item.relation);
 
             tableHtml += `
                 <tr onclick="showDetail(${item.id})">
@@ -98,14 +107,30 @@ function renderSingleTable(items, container, typeLabel) {
                     <td>${item.type === 'wedding' ? item.location : item.place}</td>
                     <td style="font-weight: 600;">${item.relation || '-'}</td>
                     <td style="text-align: center;">${attachmentHtml}</td>
-                    <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${amount}</td>
+                    <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${formatNumber(amountVal)}</td>
                 </tr>
             `;
         });
     });
 
-    tableHtml += `</tbody></table>`;
+    tableHtml += `
+            </tbody>
+            <tfoot>
+                <tr class="table-footer-row">
+                    <td colspan="${typeLabel === '조사' ? 8 : 7}" style="text-align: right; font-weight: 600; color: var(--toss-text-muted);">${typeLabel} 합계</td>
+                    <td style="text-align: right; font-weight: 800; color: var(--toss-blue); font-size: 17px;">${formatNumber(tableTotal)}원</td>
+                </tr>
+            </tfoot>
+        </table>`;
     container.innerHTML = tableHtml;
+}
+
+function renderTotalSummary(data) {
+    const totalAmountElement = document.getElementById('total-amount');
+    if (!totalAmountElement) return;
+    
+    const total = data.reduce((acc, item) => acc + getAmountValue(item.relation), 0);
+    totalAmountElement.textContent = formatNumber(total) + '원';
 }
 
 function showDetail(id) {
@@ -114,6 +139,7 @@ function showDetail(id) {
     
     const modal = document.getElementById('modal');
     const modalBody = document.getElementById('modal-body');
+    const amountVal = getAmountValue(item.relation);
     
     if (item.type === 'wedding') {
         modalBody.innerHTML = `
@@ -134,7 +160,7 @@ function showDetail(id) {
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">축의금</span>
-                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${getAmount(item.relation)}원</span>
+                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${formatNumber(amountVal)}원</span>
             </div>
         `;
     } else {
@@ -152,7 +178,7 @@ function showDetail(id) {
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">부의금</span>
-                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${getAmount(item.relation)}원</span>
+                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${formatNumber(amountVal)}원</span>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">유가족</span>
