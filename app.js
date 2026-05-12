@@ -102,4 +102,6 @@ function setupModal() {
     };
 }
 
+window.showDetail = showDetail;
 document.addEventListener('DOMContentLoaded', init);
+
