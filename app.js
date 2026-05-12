@@ -7,9 +7,6 @@ async function init() {
         obituaries = await response.json();
         renderObituaries(obituaries);
         
-        const searchInput = document.getElementById('search-input');
-        searchInput.addEventListener('input', handleSearch);
-        
         setupModal();
     } catch (error) {
         console.error('Error loading data:', error);
@@ -43,15 +40,7 @@ function renderObituaries(data) {
     `).join('');
 }
 
-function handleSearch(e) {
-    const term = e.target.value.toLowerCase();
-    const filtered = obituaries.filter(item => 
-        item.name.toLowerCase().includes(term) || 
-        item.family.toLowerCase().includes(term) ||
-        item.burialPlace.toLowerCase().includes(term)
-    );
-    renderObituaries(filtered);
-}
+
 
 function showDetail(id) {
     const item = obituaries.find(o => o.id === id);
