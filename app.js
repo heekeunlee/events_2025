@@ -1,66 +1,93 @@
-let obituaries = [];
+let allData = [];
 
 async function init() {
     try {
         const baseUrl = import.meta.env.BASE_URL || '/';
         const response = await fetch(`${baseUrl}data.json`);
-        obituaries = await response.json();
-        renderObituaries(obituaries);
+        allData = await response.json();
         
+        renderSections(allData);
         setupModal();
     } catch (error) {
         console.error('Error loading data:', error);
-        const body = document.getElementById('obituary-body');
-        if (body) {
-            body.innerHTML = '<tr><td colspan="8" class="loader">데이터를 불러오는 중 오류가 발생했습니다.</td></tr>';
-        }
     }
 }
 
-function renderObituaries(data) {
-    const body = document.getElementById('obituary-body');
-    if (!body) return;
+function renderSections(data) {
+    const weddingContainer = document.getElementById('wedding-container');
+    const obituaryContainer = document.getElementById('obituary-container');
     
-    if (data.length === 0) {
-        body.innerHTML = '<tr><td colspan="8" class="loader">검색 결과가 없습니다.</td></tr>';
+    // Split data
+    const weddings = data.filter(item => item.type === 'wedding');
+    const obituaries = data.filter(item => item.type === 'obituary');
+    
+    renderMonthlyTables(weddings, weddingContainer, '경사');
+    renderMonthlyTables(obituaries, obituaryContainer, '조사');
+}
+
+function renderMonthlyTables(items, container, typeLabel) {
+    if (items.length === 0) {
+        container.innerHTML = '<p class="loader">데이터가 없습니다.</p>';
         return;
     }
-    
-    body.innerHTML = data.map(item => {
-        if (item.type === 'wedding') {
-            return `
-                <tr onclick="showDetail(${item.id})">
-                    <td>${item.id}</td>
-                    <td style="font-size: 0.85rem; color: #e67e22; font-weight: 600;">${item.category}</td>
-                    <td style="font-weight: 600;">${item.groom} ♡ ${item.bride}</td>
-                    <td>-</td>
-                    <td>${item.dateTime}</td>
-                    <td>-</td>
-                    <td>${item.location}</td>
-                    <td>-</td>
-                </tr>
-            `;
-        } else {
-            return `
-                <tr onclick="showDetail(${item.id})">
-                    <td>${item.id}</td>
-                    <td style="font-size: 0.85rem; color: var(--text-muted);">${item.category}</td>
-                    <td style="font-weight: 600;">${item.name}</td>
-                    <td>${item.genderAge}</td>
-                    <td>${item.diedDate}</td>
-                    <td>${item.funeralDate}</td>
-                    <td>${item.place}</td>
-                    <td>${item.burialPlace}</td>
-                </tr>
-            `;
-        }
-    }).join('');
+
+    // Group by month
+    const groups = {};
+    items.forEach(item => {
+        const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
+        // Extract month (assuming YYYY-MM or YYYY년 MM월)
+        const match = dateStr.match(/(\d{4})[-년]\s*(\d{1,2})/);
+        const month = match ? `${match[1]}년 ${parseInt(match[2])}월` : '기타';
+        
+        if (!groups[month]) groups[month] = [];
+        groups[month].push(item);
+    });
+
+    // Sort months (simplified)
+    const sortedMonths = Object.keys(groups).sort((a, b) => {
+        const aVal = a.match(/(\d+)년\s+(\d+)월/);
+        const bVal = b.match(/(\d+)년\s+(\d+)월/);
+        if (!aVal || !bVal) return 0;
+        return (parseInt(aVal[1]) * 100 + parseInt(aVal[2])) - (parseInt(bVal[1]) * 100 + parseInt(bVal[2]));
+    });
+
+    container.innerHTML = sortedMonths.map(month => `
+        <div class="month-group">
+            <h3 class="month-title">${month}</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>구분</th>
+                            <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
+                            <th>성별/연령</th>
+                            <th>${typeLabel === '경사' ? '결혼식 일시' : '별세일'}</th>
+                            <th>${typeLabel === '경사' ? '장소' : '장례식장/빈소'}</th>
+                            <th>관계</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${groups[month].map(item => `
+                            <tr onclick="showDetail(${item.id})">
+                                <td>${item.id}</td>
+                                <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#e67e22' : '#7f8c8d'};">${item.typeLabel}</td>
+                                <td style="font-weight: 600;">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
+                                <td>${item.type === 'wedding' ? '-' : item.genderAge}</td>
+                                <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
+                                <td>${item.type === 'wedding' ? item.location : item.place}</td>
+                                <td style="color: var(--accent-color); font-weight: 500;">${item.relation || '-'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `).join('');
 }
 
-
-
 function showDetail(id) {
-    const item = obituaries.find(o => o.id === id);
+    const item = allData.find(o => o.id === id);
     if (!item) return;
     
     const modal = document.getElementById('modal');
@@ -70,7 +97,7 @@ function showDetail(id) {
         modalBody.innerHTML = `
             <div class="modal-detail-header">
                 <h2 class="card-name" style="font-size: 2rem;">${item.groom} ♡ ${item.bride}</h2>
-                <p class="card-date" style="margin-bottom: 5px;">축복된 결혼을 축하합니다</p>
+                <p class="card-date" style="margin-bottom: 5px;">${item.typeLabel} | ${item.relation}</p>
                 <p class="card-date" style="margin-bottom: 30px;">일시: ${item.dateTime}</p>
             </div>
             <div class="modal-detail-item">
@@ -86,7 +113,7 @@ function showDetail(id) {
         modalBody.innerHTML = `
             <div class="modal-detail-header">
                 <h2 class="card-name" style="font-size: 2rem;">${item.name}</h2>
-                <p class="card-date" style="margin-bottom: 5px;">${item.category} | ${item.genderAge}</p>
+                <p class="card-date" style="margin-bottom: 5px;">${item.typeLabel} | ${item.genderAge} | ${item.relation}</p>
                 <p class="card-date" style="margin-bottom: 30px;">별세일: ${item.diedDate}</p>
             </div>
             <div class="modal-detail-item">
@@ -131,4 +158,3 @@ function setupModal() {
 
 window.showDetail = showDetail;
 document.addEventListener('DOMContentLoaded', init);
-

@@ -60,13 +60,44 @@ h1 {
     font-size: 1.1rem;
 }
 
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 80px 0 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+    color: var(--primary-color);
+}
+
+.month-group {
+    margin-bottom: 50px;
+}
+
+.month-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+}
+
+.month-title::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
 .table-responsive {
     width: 100%;
     overflow-x: auto;
     background-color: var(--card-bg);
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: var(--shadow);
-    margin: 60px 0;
     border: 1px solid var(--border-color);
 }
 
@@ -78,18 +109,18 @@ table {
 
 th {
     background-color: rgba(44, 62, 80, 0.02);
-    padding: 15px 12px;
+    padding: 12px 10px;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     border-bottom: 2px solid var(--border-color);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 td {
-    padding: 15px 12px;
-    font-size: 0.9rem;
+    padding: 12px 10px;
+    font-size: 0.85rem;
     color: var(--text-main);
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition);
