@@ -251,6 +251,63 @@ tr:hover td {
     padding: 20px 16px;
 }
 
+/* Gallery Archive */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 24px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gallery-item:hover {
+    transform: translateY(-4px);
+}
+
+.gallery-image-wrapper {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-info {
+    padding: 20px;
+}
+
+.gallery-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--toss-text-main);
+    margin-bottom: 4px;
+}
+
+.gallery-date {
+    font-size: 14px;
+    color: var(--toss-text-muted);
+}
+
+.print-page-break {
+    page-break-before: always;
+}
+
 /* Print Optimization */
 @media print {
     body {
@@ -265,7 +322,7 @@ tr:hover td {
     .print-button, .close-button, .close-image-button, .modal, .attachment-icon {
         display: none !important;
     }
-    .main-card, .total-summary-card {
+    .main-card, .total-summary-card, .gallery-item {
         box-shadow: none;
         border: none;
         padding: 0;
@@ -274,6 +331,17 @@ tr:hover td {
         margin-top: 20px;
         border-top: 2px solid #eee;
         padding-top: 20px;
+        margin-bottom: 40px;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .gallery-image-wrapper {
+        height: 350px;
+    }
+    .print-page-break {
+        page-break-before: always;
     }
     header {
         padding: 20px 0;
@@ -284,10 +352,6 @@ tr:hover td {
     td, th {
         padding: 10px 6px;
         font-size: 12px;
-    }
-    .month-divider td {
-        background-color: #f8f9fa !important;
-        -webkit-print-color-adjust: exact;
     }
     .table-footer-row td {
         background-color: #f8f9fa !important;

@@ -29,6 +29,7 @@ function renderSections(data) {
     renderSingleTable(obituaries, obituaryContainer, '조사');
     
     renderTotalSummary(data);
+    renderImageGallery(data);
 }
 
 function getAmountValue(item) {
@@ -36,27 +37,52 @@ function getAmountValue(item) {
     const rel = item.relation.trim();
     const id = item.id;
     
-    // --- CALCULATION TO REACH EXACTLY 5,100,000 ---
-    // Total Items: 26 (7 weddings, 19 obituaries)
+    // --- CALCULATION TO REACH EXACTLY 5,300,000 ---
+    // Target Increase from 5,100,000: +200,000
     
-    // Group 1: Relatives (5 items: 2, 7, 12, 19, 26) 
-    // 300,000 * 5 = 1,500,000
+    // 1. Relatives (5 items) @ 300k = 1,500k
     if (rel.includes('친척')) return 300000;
     
-    // Group 2: Work/Church (8 items: 1, 3, 8, 15, 17, 18, 22, 23)
-    // 200,000 * 8 = 1,600,000
+    // 2. Work/Church (8 items) 
+    // All @ 200k = 1,600k
     if (rel.includes('직장 동료') || rel.includes('교회 지인')) return 200000;
     
-    // Group 3: School/Club/Other (13 items: 4, 5, 6, 9, 10, 11, 13, 14, 16, 20, 21, 24, 25)
-    // 150,000 * 13 = 1,950,000
-    // Total so far: 1,500,000 + 1,600,000 + 1,950,000 = 5,050,000
-    // To reach 5,100,000, add 50,000 to one item in this group (e.g., id 20 - 이정민)
+    // 3. School/Club/Other (13 items)
+    // Base 150k * 13 = 1,950k
+    // Total so far: 1,500 + 1,600 + 1,950 = 5,050,000
+    // Need 250k more. Increase 5 items in this group by 50k (to 200k).
+    // Target IDs for increase: 4, 5, 6, 9, 10
     if (rel.includes('학교선후배') || rel.includes('동호회 지인')) {
-        if (id === 20) return 200000; 
+        if ([4, 5, 6, 9, 10].includes(id)) return 200000; 
         return 150000;
     }
     
     return 150000;
+}
+
+function renderImageGallery(data) {
+    const galleryContainer = document.getElementById('image-gallery');
+    if (!galleryContainer) return;
+    
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    const itemsWithImages = data.filter(item => item.attachment);
+    
+    if (itemsWithImages.length === 0) {
+        galleryContainer.innerHTML = '<p style="color: var(--toss-text-muted);">첨부된 이미지가 없습니다.</p>';
+        return;
+    }
+    
+    galleryContainer.innerHTML = itemsWithImages.map(item => `
+        <div class="gallery-item" onclick="showImage('${item.attachment}')">
+            <div class="gallery-image-wrapper">
+                <img src="${baseUrl}${item.attachment}" alt="${item.name || item.groom}" loading="lazy">
+            </div>
+            <div class="gallery-info">
+                <div class="gallery-name">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</div>
+                <div class="gallery-date">${item.type === 'wedding' ? item.dateTime : item.diedDate}</div>
+            </div>
+        </div>
+    `).join('');
 }
 
 function formatNumber(num) {
