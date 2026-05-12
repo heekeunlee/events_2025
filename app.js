@@ -17,7 +17,6 @@ function renderSections(data) {
     const weddingContainer = document.getElementById('wedding-container');
     const obituaryContainer = document.getElementById('obituary-container');
     
-    // Split data
     const weddings = data.filter(item => item.type === 'wedding');
     const obituaries = data.filter(item => item.type === 'obituary');
     
@@ -27,15 +26,13 @@ function renderSections(data) {
 
 function renderMonthlyTables(items, container, typeLabel) {
     if (items.length === 0) {
-        container.innerHTML = '<p class="loader">데이터가 없습니다.</p>';
+        container.innerHTML = '<p style="padding: 20px; color: #8B95A1;">데이터가 없습니다.</p>';
         return;
     }
 
-    // Group by month
     const groups = {};
     items.forEach(item => {
         const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
-        // Extract month (assuming YYYY-MM or YYYY년 MM월)
         const match = dateStr.match(/(\d{4})[-년]\s*(\d{1,2})/);
         const month = match ? `${match[1]}년 ${parseInt(match[2])}월` : '기타';
         
@@ -43,7 +40,6 @@ function renderMonthlyTables(items, container, typeLabel) {
         groups[month].push(item);
     });
 
-    // Sort months (simplified)
     const sortedMonths = Object.keys(groups).sort((a, b) => {
         const aVal = a.match(/(\d+)년\s+(\d+)월/);
         const bVal = b.match(/(\d+)년\s+(\d+)월/);
@@ -58,25 +54,25 @@ function renderMonthlyTables(items, container, typeLabel) {
                 <table>
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>구분</th>
+                            <th style="width: 50px;">No</th>
+                            <th style="width: 70px;">구분</th>
                             <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
-                            <th>성별/연령</th>
+                            ${typeLabel === '조사' ? '<th style="width: 100px;">성별/연령</th>' : ''}
                             <th>${typeLabel === '경사' ? '결혼식 일시' : '별세일'}</th>
                             <th>${typeLabel === '경사' ? '장소' : '장례식장/빈소'}</th>
-                            <th>관계</th>
+                            <th style="width: 100px;">관계</th>
                         </tr>
                     </thead>
                     <tbody>
                         ${groups[month].map(item => `
                             <tr onclick="showDetail(${item.id})">
                                 <td>${item.id}</td>
-                                <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#e67e22' : '#7f8c8d'};">${item.typeLabel}</td>
-                                <td style="font-weight: 600;">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
-                                <td>${item.type === 'wedding' ? '-' : item.genderAge}</td>
+                                <td style="font-weight: 600; color: ${item.type === 'wedding' ? '#0064FF' : '#4E5968'};">${item.typeLabel}</td>
+                                <td style="font-weight: 600; color: var(--toss-text-main);">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
+                                ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
                                 <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
                                 <td>${item.type === 'wedding' ? item.location : item.place}</td>
-                                <td style="color: var(--accent-color); font-weight: 500;">${item.relation || '-'}</td>
+                                <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
                             </tr>
                         `).join('')}
                     </tbody>
@@ -96,41 +92,49 @@ function showDetail(id) {
     if (item.type === 'wedding') {
         modalBody.innerHTML = `
             <div class="modal-detail-header">
-                <h2 class="card-name" style="font-size: 2rem;">${item.groom} ♡ ${item.bride}</h2>
-                <p class="card-date" style="margin-bottom: 5px;">${item.typeLabel} | ${item.relation}</p>
-                <p class="card-date" style="margin-bottom: 30px;">일시: ${item.dateTime}</p>
+                <h2 class="card-name">${item.groom} ♡ ${item.bride}</h2>
+                <div style="margin-bottom: 32px;">
+                    <span class="info-label">유형</span>
+                    <span class="info-value" style="color: var(--toss-blue);">${item.typeLabel} | ${item.relation}</span>
+                </div>
+                <div>
+                    <span class="info-label">일시</span>
+                    <span class="info-value">${item.dateTime}</span>
+                </div>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">장소</span>
-                <span class="info-value" style="font-size: 1.1rem;">${item.location}</span>
-            </div>
-            <div class="modal-detail-item">
-                <span class="info-label">비고</span>
-                <span class="info-value" style="font-size: 1.1rem;">많은 축하 부탁드립니다.</span>
+                <span class="info-value">${item.location}</span>
             </div>
         `;
     } else {
         modalBody.innerHTML = `
             <div class="modal-detail-header">
-                <h2 class="card-name" style="font-size: 2rem;">${item.name}</h2>
-                <p class="card-date" style="margin-bottom: 5px;">${item.typeLabel} | ${item.genderAge} | ${item.relation}</p>
-                <p class="card-date" style="margin-bottom: 30px;">별세일: ${item.diedDate}</p>
+                <h2 class="card-name">${item.name}</h2>
+                <div style="margin-bottom: 32px;">
+                    <span class="info-label">유형</span>
+                    <span class="info-value">${item.typeLabel} | ${item.genderAge} | ${item.relation}</span>
+                </div>
+                <div>
+                    <span class="info-label">별세일</span>
+                    <span class="info-value">${item.diedDate}</span>
+                </div>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">유가족</span>
-                <span class="info-value" style="font-size: 1.1rem;">${item.family}</span>
+                <span class="info-value">${item.family}</span>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">빈소</span>
-                <span class="info-value" style="font-size: 1.1rem;">${item.place}</span>
+                <span class="info-value">${item.place}</span>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">발인일시</span>
-                <span class="info-value" style="font-size: 1.1rem;">${item.funeralDate}</span>
+                <span class="info-value">${item.funeralDate}</span>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">장지</span>
-                <span class="info-value" style="font-size: 1.1rem;">${item.burialPlace}</span>
+                <span class="info-value">${item.burialPlace}</span>
             </div>
         `;
     }
