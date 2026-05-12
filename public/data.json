@@ -1,92 +1,112 @@
 [
   {
     "id": 1,
-    "name": "김철수",
-    "diedDate": "2025-01-15",
-    "family": "김영희 (배우자), 김민준 (자)",
-    "place": "수원연화장 장례식장 201호",
-    "funeralDate": "2025-01-17",
-    "burialPlace": "수원연화장 추모의 집"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-06-15 14:50경",
+    "funeralDate": "2025-06-18 06:30",
+    "place": "수원시연화장 장례식장 206호실",
+    "name": "故 이기매 권사",
+    "genderAge": "95세",
+    "family": "고윤제A 성도 모친상 / 이선주 성도 시모상",
+    "burialPlace": "수원시연화장 승화원 -> 대전현충원"
   },
   {
     "id": 2,
-    "name": "이영자",
-    "diedDate": "2025-01-20",
-    "family": "박성진 (자), 박지민 (녀)",
-    "place": "수원연화장 장례식장 102호",
-    "funeralDate": "2025-01-22",
-    "burialPlace": "용인 천주교 공원묘지"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-07-07",
+    "funeralDate": "2025-07-10 10:00",
+    "place": "수원시연화장 장례식장 206호",
+    "name": "故 장순진",
+    "genderAge": "남, 98세",
+    "family": "아들 장영수 / 딸 장서현·장영애·장은설 / 외손녀 장주원",
+    "burialPlace": "서울 동작구 국립현충원"
   },
   {
     "id": 3,
-    "name": "박용운",
-    "diedDate": "2025-02-05",
-    "family": "이순자 (배우자), 박대호 (자)",
-    "place": "수원연화장 장례식장 특1호",
-    "funeralDate": "2025-02-07",
-    "burialPlace": "수원연화장 자연장지"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-08-13",
+    "funeralDate": "2025-08-15 12:00",
+    "place": "수원연화장 무빈소",
+    "name": "故 박성현",
+    "genderAge": "남, 43세",
+    "family": "상주 박은미·김연석·김형기",
+    "burialPlace": "승화원 -> 추모의 집"
   },
   {
     "id": 4,
-    "name": "최미숙",
-    "diedDate": "2025-02-12",
-    "family": "정하늘 (자), 정미래 (녀)",
-    "place": "수원연화장 장례식장 205호",
-    "funeralDate": "2025-02-14",
-    "burialPlace": "분당 메모리얼 파크"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-08-30",
+    "funeralDate": "2025-09-01 07:00",
+    "place": "수원연화장 201호",
+    "name": "故 소재돈",
+    "genderAge": "남, 60세",
+    "family": "배우자 김교성 / 상주 소병현·소병희",
+    "burialPlace": "석포리 선영"
   },
   {
     "id": 5,
-    "name": "정성호",
-    "diedDate": "2025-03-01",
-    "family": "최윤서 (배우자), 정지웅 (자)",
-    "place": "수원연화장 장례식장 301호",
-    "funeralDate": "2025-03-03",
-    "burialPlace": "수원연화장 봉안담"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-09-02",
+    "funeralDate": "2025-09-04",
+    "place": "수원시연화장 장례식장 190호",
+    "name": "故 한봉화",
+    "genderAge": "여, 87세",
+    "family": "아들 김재연 / 딸 김영희·김점순·김미경 등",
+    "burialPlace": "대전현충원"
   },
   {
     "id": 6,
-    "name": "한정희",
-    "diedDate": "2025-03-10",
-    "family": "김태양 (자), 김보람 (녀)",
-    "place": "수원연화장 장례식장 105호",
-    "funeralDate": "2025-03-12",
-    "burialPlace": "광교산 선영"
+    "category": "빈소: 수원연화장",
+    "diedDate": "2025-11-12 00:53",
+    "funeralDate": "2025-11-14 05:00",
+    "place": "수원시 연화장 장례식장 210호실",
+    "name": "정기숙",
+    "genderAge": "향년 68세",
+    "family": "지선영 삼성증권 영업지점장 모친상",
+    "burialPlace": "수원연화장 납골당/추모의집"
   },
   {
     "id": 7,
-    "name": "윤대협",
-    "diedDate": "2025-03-25",
-    "family": "강백호 (사위), 서태웅 (조카)",
-    "place": "수원연화장 장례식장 202호",
-    "funeralDate": "2025-03-27",
-    "burialPlace": "수원연화장 추모의 집"
+    "category": "장지: 수원연화장",
+    "diedDate": "2025-04-04 09:15",
+    "funeralDate": "2025-04-05 11:00",
+    "place": "부천시민장례식장",
+    "name": "故 김정오",
+    "genderAge": "남, 향년 63세",
+    "family": "배우자 김현숙 / 아들 김영재·김영승",
+    "burialPlace": "장지: 수원시연화장"
   },
   {
     "id": 8,
-    "name": "임재범",
-    "diedDate": "2025-04-02",
-    "family": "박화요비 (녀), 임창정 (자)",
-    "place": "수원연화장 장례식장 203호",
-    "funeralDate": "2025-04-04",
-    "burialPlace": "수목장"
+    "category": "장지: 수원연화장",
+    "diedDate": "2025-08-30",
+    "funeralDate": "2025-09-01 08:00",
+    "place": "보훈공단 중앙보훈병원 장례식장 3층3호",
+    "name": "故 조예제 권사",
+    "genderAge": "여, 72세",
+    "family": "배우자 주원영 / 아들 주종열·주종민 등",
+    "burialPlace": "서울추모공원 -> 수원시연화장 추모의집"
   },
   {
     "id": 9,
-    "name": "백지영",
-    "diedDate": "2025-04-15",
-    "family": "정석원 (배우자)",
-    "place": "수원연화장 장례식장 101호",
-    "funeralDate": "2025-04-17",
-    "burialPlace": "수원연화장 봉안담"
+    "category": "장지: 수원연화장",
+    "diedDate": "2025-09-04",
+    "funeralDate": "2025-09-06 08:30",
+    "place": "보훈공단 중앙보훈병원 장례식장 2층3호",
+    "name": "故 정종구",
+    "genderAge": "남, 75세",
+    "family": "배우자 서순복 / 딸 정혜선·정혜경 등",
+    "burialPlace": "수원연화장 -> 국립서울현충원"
   },
   {
     "id": 10,
-    "name": "조용필",
-    "diedDate": "2025-05-01",
-    "family": "조승우 (자), 조이 (녀)",
-    "place": "수원연화장 장례식장 특2호",
-    "funeralDate": "2025-05-03",
-    "burialPlace": "수원연화장 자연장지"
+    "category": "장지: 수원연화장",
+    "diedDate": "2025-10-26",
+    "funeralDate": "2025-10-28 06:30",
+    "place": "수원중앙병원장례식장 3호실",
+    "name": "故 이소연",
+    "genderAge": "여, 43세",
+    "family": "배우자 이상일 / 딸 이서아 / 아들 이서준",
+    "burialPlace": "수원연화장 추모의집"
   }
 ]
