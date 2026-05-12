@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-06-15 14:50경",
     "funeralDate": "2025-06-18 06:30",
@@ -12,6 +13,7 @@
   },
   {
     "id": 2,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-07-07",
     "funeralDate": "2025-07-10 10:00",
@@ -23,6 +25,7 @@
   },
   {
     "id": 3,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-08-13",
     "funeralDate": "2025-08-15 12:00",
@@ -34,6 +37,7 @@
   },
   {
     "id": 4,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-08-30",
     "funeralDate": "2025-09-01 07:00",
@@ -45,6 +49,7 @@
   },
   {
     "id": 5,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-09-02",
     "funeralDate": "2025-09-04",
@@ -56,6 +61,7 @@
   },
   {
     "id": 6,
+    "type": "obituary",
     "category": "빈소: 수원연화장",
     "diedDate": "2025-11-12 00:53",
     "funeralDate": "2025-11-14 05:00",
@@ -67,6 +73,7 @@
   },
   {
     "id": 7,
+    "type": "obituary",
     "category": "장지: 수원연화장",
     "diedDate": "2025-04-04 09:15",
     "funeralDate": "2025-04-05 11:00",
@@ -78,6 +85,7 @@
   },
   {
     "id": 8,
+    "type": "obituary",
     "category": "장지: 수원연화장",
     "diedDate": "2025-08-30",
     "funeralDate": "2025-09-01 08:00",
@@ -89,6 +97,7 @@
   },
   {
     "id": 9,
+    "type": "obituary",
     "category": "장지: 수원연화장",
     "diedDate": "2025-09-04",
     "funeralDate": "2025-09-06 08:30",
@@ -100,6 +109,7 @@
   },
   {
     "id": 10,
+    "type": "obituary",
     "category": "장지: 수원연화장",
     "diedDate": "2025-10-26",
     "funeralDate": "2025-10-28 06:30",
@@ -111,6 +121,7 @@
   },
   {
     "id": 11,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-03-05 23:00",
     "funeralDate": "2025-03-08 07:00",
@@ -122,6 +133,7 @@
   },
   {
     "id": 12,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-04-25 20:00",
     "funeralDate": "2025-04-28 08:00",
@@ -133,6 +145,7 @@
   },
   {
     "id": 13,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-08-02",
     "funeralDate": "2025-08-04 11:00",
@@ -144,6 +157,7 @@
   },
   {
     "id": 14,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-08-12",
     "funeralDate": "2025-09-15 09:30",
@@ -155,6 +169,7 @@
   },
   {
     "id": 15,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-09-23 13:30",
     "funeralDate": "2025-09-25 11:30",
@@ -166,6 +181,7 @@
   },
   {
     "id": 16,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-10-20",
     "funeralDate": "2025-10-23 09:00",
@@ -177,6 +193,7 @@
   },
   {
     "id": 17,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-11-09",
     "funeralDate": "2025-11-12 09:00",
@@ -188,6 +205,7 @@
   },
   {
     "id": 18,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-11-13 19:35",
     "funeralDate": "2025-11-15 05:30",
@@ -199,6 +217,7 @@
   },
   {
     "id": 19,
+    "type": "obituary",
     "category": "외부 빈소",
     "diedDate": "2025-11-25",
     "funeralDate": "2025-11-27 07:00",
@@ -207,5 +226,82 @@
     "genderAge": "연령 미기재",
     "family": "딸 심영숙·심경희·심정은·심육남 / 아들 심상실·심성섭·심상설 등",
     "burialPlace": "전남 구례군 마산면 황전리"
+  },
+  {
+    "id": 20,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 1월 4일 토요일 오후 12시 30분",
+    "location": "라한셀렉트 경주 다이너스티홀",
+    "groom": "이정민",
+    "bride": "김아라",
+    "family": "신랑 이정민 ♡ 신부 김아라",
+    "burialPlace": "-"
+  },
+  {
+    "id": 21,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 1월 19일 일요일 오후 1시 20분",
+    "location": "해군호텔W웨딩홀 별관 세인트홀",
+    "groom": "명경규",
+    "bride": "고유경",
+    "family": "신랑 명경규 ♡ 신부 고유경",
+    "burialPlace": "-"
+  },
+  {
+    "id": 22,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 4월 27일 일요일 오후 1시 20분",
+    "location": "더컨벤션 잠실 그랜드볼룸홀",
+    "groom": "조희준",
+    "bride": "연희",
+    "family": "신랑 조희준 ♡ 신부 연희",
+    "burialPlace": "-"
+  },
+  {
+    "id": 23,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 5월 10일 토요일 오후 12시 40분",
+    "location": "라마다 서울 신도림 호텔 하늘정원홀",
+    "groom": "윤상필",
+    "bride": "현새롬",
+    "family": "신랑 윤상필 ♡ 신부 현새롬",
+    "burialPlace": "-"
+  },
+  {
+    "id": 24,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 7월 13일 일요일 오후 1시",
+    "location": "러브탑 웨딩홀",
+    "groom": "하지성",
+    "bride": "이시영",
+    "family": "신랑 하지성 ♡ 신부 이시영",
+    "burialPlace": "-"
+  },
+  {
+    "id": 25,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 12월 6일 토요일 오전 11시",
+    "location": "스카이웨딩컨벤션 노블리스홀",
+    "groom": "이도훈",
+    "bride": "정다영",
+    "family": "신랑 이도훈 ♡ 신부 정다영",
+    "burialPlace": "-"
+  },
+  {
+    "id": 26,
+    "type": "wedding",
+    "category": "결혼",
+    "dateTime": "2025년 12월 27일 토요일 오후 2시",
+    "location": "히든베이호텔 그랜드볼룸홀",
+    "groom": "이주찬",
+    "bride": "전유림",
+    "family": "신랑 이주찬 ♡ 신부 전유림",
+    "burialPlace": "-"
   }
 ]
