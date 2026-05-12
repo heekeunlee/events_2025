@@ -6,20 +6,20 @@
                     <th style="width: 80px;">구분</th>
                     <th>${n===`경사`?`신랑 ♡ 신부`:`고인명`}</th>
                     ${n===`조사`?`<th style="width: 120px;">성별/연령</th>`:``}
-                    <th>${n===`경사`?`결혼식 일시`:`별세일`}</th>
+                    <th>${n===`경사`?`일시`:`별세일`}</th>
                     <th>장소</th>
                     <th style="width: 120px;">관계</th>
                 </tr>
             </thead>
             <tbody>
-    `;i.forEach(e=>{a+=`
+    `,o=1;i.forEach(e=>{let t=e.split(` `)[1]||e;a+=`
             <tr class="month-divider">
                 <td colspan="${n===`조사`?7:6}">${e}</td>
             </tr>
         `,r[e].forEach(e=>{a+=`
                 <tr onclick="showDetail(${e.id})">
-                    <td>${e.id}</td>
-                    <td style="font-weight: 600; color: ${e.type===`wedding`?`#0064FF`:`#4E5968`};">${e.typeLabel}</td>
+                    <td style="text-align: center;">${o++}</td>
+                    <td style="font-weight: 600; color: var(--toss-text-main); text-align: center;">${t}</td>
                     <td style="font-weight: 600; color: var(--toss-text-main);">${e.type===`wedding`?`${e.groom} ♡ ${e.bride}`:e.name}</td>
                     ${e.type===`obituary`?`<td>${e.genderAge}</td>`:``}
                     <td>${e.type===`wedding`?e.dateTime:e.diedDate}</td>
@@ -31,7 +31,7 @@
                 <h2 class="card-name">${n.groom} ♡ ${n.bride}</h2>
                 <div style="margin-bottom: 32px;">
                     <span class="info-label">유형</span>
-                    <span class="info-value" style="color: var(--toss-blue);">${n.typeLabel} | ${n.relation}</span>
+                    <span class="info-value" style="color: var(--toss-blue);">결혼 | ${n.relation}</span>
                 </div>
                 <div>
                     <span class="info-label">일시</span>
@@ -47,7 +47,7 @@
                 <h2 class="card-name">${n.name}</h2>
                 <div style="margin-bottom: 32px;">
                     <span class="info-label">유형</span>
-                    <span class="info-value">${n.typeLabel} | ${n.genderAge} | ${n.relation}</span>
+                    <span class="info-value">부고 | ${n.genderAge} | ${n.relation}</span>
                 </div>
                 <div>
                     <span class="info-label">별세일</span>
