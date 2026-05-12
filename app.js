@@ -25,6 +25,7 @@ function renderSections(data) {
 }
 
 function renderMonthlyTables(items, container, typeLabel) {
+    if (!container) return;
     if (items.length === 0) {
         container.innerHTML = '<p style="padding: 20px; color: #8B95A1;">데이터가 없습니다.</p>';
         return;
