@@ -24,9 +24,25 @@
         </header>
 
         <main class="container">
-            <div id="obituary-grid" class="obituary-grid">
-                <!-- Data will be injected here -->
-                <div class="loader">데이터를 불러오는 중입니다...</div>
+            <div class="table-responsive">
+                <table id="obituary-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>고인명</th>
+                            <th>별세일</th>
+                            <th>빈소</th>
+                            <th>발인</th>
+                            <th>장지</th>
+                        </tr>
+                    </thead>
+                    <tbody id="obituary-body">
+                        <!-- Data will be injected here -->
+                        <tr>
+                            <td colspan="6" class="loader">데이터를 불러오는 중입니다...</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </main>
 

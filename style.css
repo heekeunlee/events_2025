@@ -95,86 +95,65 @@ h1 {
     color: var(--text-muted);
 }
 
-.obituary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 60px 0;
-}
-
-.obituary-card {
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
     background-color: var(--card-bg);
     border-radius: 16px;
-    padding: 30px;
-    border: 1px solid var(--border-color);
     box-shadow: var(--shadow);
-    transition: var(--transition);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    margin: 60px 0;
+    border: 1px solid var(--border-color);
 }
 
-.obituary-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
 }
 
-.obituary-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background-color: var(--accent-color);
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.obituary-card:hover::before {
-    opacity: 1;
-}
-
-.card-header {
-    margin-bottom: 20px;
-}
-
-.card-name {
-    font-size: 1.4rem;
+th {
+    background-color: rgba(44, 62, 80, 0.02);
+    padding: 20px;
     font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.card-date {
     font-size: 0.9rem;
     color: var(--text-muted);
-    font-weight: 500;
-}
-
-.card-info {
-    margin-bottom: 15px;
-}
-
-.info-label {
-    font-size: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    display: block;
-    margin-bottom: 4px;
+    letter-spacing: 0.5px;
 }
 
-.info-value {
-    font-size: 0.95rem;
+td {
+    padding: 20px;
+    font-size: 1rem;
     color: var(--text-main);
-    display: block;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+tr {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: rgba(52, 152, 219, 0.05);
 }
 
 .loader {
-    grid-column: 1 / -1;
     text-align: center;
     padding: 40px;
     color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+    th, td {
+        padding: 15px 10px;
+        font-size: 0.85rem;
+    }
 }
 
 footer {

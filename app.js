@@ -13,33 +13,31 @@ async function init() {
         setupModal();
     } catch (error) {
         console.error('Error loading data:', error);
-        document.getElementById('obituary-grid').innerHTML = '<div class="loader">데이터를 불러오는 중 오류가 발생했습니다.</div>';
+        const body = document.getElementById('obituary-body');
+        if (body) {
+            body.innerHTML = '<tr><td colspan="6" class="loader">데이터를 불러오는 중 오류가 발생했습니다.</td></tr>';
+        }
     }
 }
 
 function renderObituaries(data) {
-    const grid = document.getElementById('obituary-grid');
+    const body = document.getElementById('obituary-body');
+    if (!body) return;
     
     if (data.length === 0) {
-        grid.innerHTML = '<div class="loader">검색 결과가 없습니다.</div>';
+        body.innerHTML = '<tr><td colspan="6" class="loader">검색 결과가 없습니다.</td></tr>';
         return;
     }
     
-    grid.innerHTML = data.map(item => `
-        <div class="obituary-card" onclick="showDetail(${item.id})">
-            <div class="card-header">
-                <h2 class="card-name">${item.name}</h2>
-                <span class="card-date">별세: ${item.diedDate}</span>
-            </div>
-            <div class="card-info">
-                <span class="info-label">장소</span>
-                <span class="info-value">${item.place}</span>
-            </div>
-            <div class="card-info">
-                <span class="info-label">발인</span>
-                <span class="info-value">${item.funeralDate}</span>
-            </div>
-        </div>
+    body.innerHTML = data.map(item => `
+        <tr onclick="showDetail(${item.id})">
+            <td>${item.id}</td>
+            <td style="font-weight: 600;">${item.name}</td>
+            <td>${item.diedDate}</td>
+            <td>${item.place}</td>
+            <td>${item.funeralDate}</td>
+            <td>${item.burialPlace}</td>
+        </tr>
     `).join('');
 }
 
