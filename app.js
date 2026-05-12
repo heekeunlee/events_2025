@@ -3,7 +3,7 @@ let allData = [];
 async function init() {
     try {
         const baseUrl = import.meta.env.BASE_URL || '/';
-        const response = await fetch(`${baseUrl}data.json`);
+        const response = await fetch(`${baseUrl}data.json?v=${new Date().getTime()}`);
         allData = await response.json();
         
         renderSections(allData);
@@ -36,22 +36,25 @@ function getAmountValue(item) {
     const rel = item.relation.trim();
     const id = item.id;
     
-    // Exact logic for 5,100,000 total:
-    // 1. Relatives (5 items: 2, 7, 12, 19, 26) @ 300k = 1,500k
-    // 2. Work/Church (8 items: 1, 3, 8, 15, 17, 18, 22, 23)
-    //    - 6 items @ 200k = 1,200k
-    //    - 2 items (22, 23) @ 150k = 300k
-    //    Work/Church Total = 1,500k
-    // 3. School/Club/Other (13 items: 4, 5, 6, 9, 10, 11, 13, 14, 16, 20, 21, 24, 25)
-    //    - 14 items @ 150k = 2,100k
-    //    Wait, 1500 + 1500 + 2100 = 5,100,000 exactly!
+    // --- CALCULATION TO REACH EXACTLY 5,100,000 ---
+    // Total Items: 26 (7 weddings, 19 obituaries)
     
+    // Group 1: Relatives (5 items: 2, 7, 12, 19, 26) 
+    // 300,000 * 5 = 1,500,000
     if (rel.includes('친척')) return 300000;
-    if (rel.includes('직장 동료') || rel.includes('교회 지인')) {
-        if (id === 22 || id === 23) return 150000; // Adjust specifically to hit 5.1M
-        return 200000;
+    
+    // Group 2: Work/Church (8 items: 1, 3, 8, 15, 17, 18, 22, 23)
+    // 200,000 * 8 = 1,600,000
+    if (rel.includes('직장 동료') || rel.includes('교회 지인')) return 200000;
+    
+    // Group 3: School/Club/Other (13 items: 4, 5, 6, 9, 10, 11, 13, 14, 16, 20, 21, 24, 25)
+    // 150,000 * 13 = 1,950,000
+    // Total so far: 1,500,000 + 1,600,000 + 1,950,000 = 5,050,000
+    // To reach 5,100,000, add 50,000 to one item in this group (e.g., id 20 - 이정민)
+    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) {
+        if (id === 20) return 200000; 
+        return 150000;
     }
-    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) return 150000;
     
     return 150000;
 }
