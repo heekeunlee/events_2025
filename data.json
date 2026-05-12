@@ -2,306 +2,332 @@
   {
     "id": 1,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-06-15 14:50경",
     "funeralDate": "2025-06-18 06:30",
     "place": "수원시연화장 장례식장 206호실",
     "name": "故 이기매 권사",
     "genderAge": "95세",
     "family": "고윤제A 성도 모친상 / 이선주 성도 시모상",
-    "burialPlace": "수원시연화장 승화원 -> 대전현충원"
+    "burialPlace": "수원시연화장 승화원 -> 대전현충원",
+    "relation": "교회 지인"
   },
   {
     "id": 2,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-07-07",
     "funeralDate": "2025-07-10 10:00",
     "place": "수원시연화장 장례식장 206호",
     "name": "故 장순진",
     "genderAge": "남, 98세",
     "family": "아들 장영수 / 딸 장서현·장영애·장은설 / 외손녀 장주원",
-    "burialPlace": "서울 동작구 국립현충원"
+    "burialPlace": "서울 동작구 국립현충원",
+    "relation": "친척"
   },
   {
     "id": 3,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-08-13",
     "funeralDate": "2025-08-15 12:00",
     "place": "수원연화장 무빈소",
     "name": "故 박성현",
     "genderAge": "남, 43세",
     "family": "상주 박은미·김연석·김형기",
-    "burialPlace": "승화원 -> 추모의 집"
+    "burialPlace": "승화원 -> 추모의 집",
+    "relation": "직장 동료"
   },
   {
     "id": 4,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-08-30",
     "funeralDate": "2025-09-01 07:00",
     "place": "수원연화장 201호",
     "name": "故 소재돈",
     "genderAge": "남, 60세",
     "family": "배우자 김교성 / 상주 소병현·소병희",
-    "burialPlace": "석포리 선영"
+    "burialPlace": "석포리 선영",
+    "relation": "동호회 지인"
   },
   {
     "id": 5,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-09-02",
     "funeralDate": "2025-09-04",
     "place": "수원시연화장 장례식장 190호",
     "name": "故 한봉화",
     "genderAge": "여, 87세",
     "family": "아들 김재연 / 딸 김영희·김점순·김미경 등",
-    "burialPlace": "대전현충원"
+    "burialPlace": "대전현충원",
+    "relation": "학교선후배"
   },
   {
     "id": 6,
     "type": "obituary",
-    "category": "빈소: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-11-12 00:53",
     "funeralDate": "2025-11-14 05:00",
     "place": "수원시 연화장 장례식장 210호실",
     "name": "정기숙",
     "genderAge": "향년 68세",
     "family": "지선영 삼성증권 영업지점장 모친상",
-    "burialPlace": "수원연화장 납골당/추모의집"
+    "burialPlace": "수원연화장 납골당/추모의집",
+    "relation": "직장 동료"
   },
   {
     "id": 7,
     "type": "obituary",
-    "category": "장지: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-04-04 09:15",
     "funeralDate": "2025-04-05 11:00",
     "place": "부천시민장례식장",
     "name": "故 김정오",
     "genderAge": "남, 향년 63세",
     "family": "배우자 김현숙 / 아들 김영재·김영승",
-    "burialPlace": "장지: 수원시연화장"
+    "burialPlace": "장지: 수원시연화장",
+    "relation": "친척"
   },
   {
     "id": 8,
     "type": "obituary",
-    "category": "장지: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-08-30",
     "funeralDate": "2025-09-01 08:00",
     "place": "보훈공단 중앙보훈병원 장례식장 3층3호",
     "name": "故 조예제 권사",
     "genderAge": "여, 72세",
     "family": "배우자 주원영 / 아들 주종열·주종민 등",
-    "burialPlace": "서울추모공원 -> 수원시연화장 추모의집"
+    "burialPlace": "서울추모공원 -> 수원시연화장 추모의집",
+    "relation": "교회 지인"
   },
   {
     "id": 9,
     "type": "obituary",
-    "category": "장지: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-09-04",
     "funeralDate": "2025-09-06 08:30",
     "place": "보훈공단 중앙보훈병원 장례식장 2층3호",
     "name": "故 정종구",
     "genderAge": "남, 75세",
     "family": "배우자 서순복 / 딸 정혜선·정혜경 등",
-    "burialPlace": "수원연화장 -> 국립서울현충원"
+    "burialPlace": "수원연화장 -> 국립서울현충원",
+    "relation": "학교선후배"
   },
   {
     "id": 10,
     "type": "obituary",
-    "category": "장지: 수원연화장",
+    "typeLabel": "조사",
     "diedDate": "2025-10-26",
     "funeralDate": "2025-10-28 06:30",
     "place": "수원중앙병원장례식장 3호실",
     "name": "故 이소연",
     "genderAge": "여, 43세",
     "family": "배우자 이상일 / 딸 이서아 / 아들 이서준",
-    "burialPlace": "수원연화장 추모의집"
+    "burialPlace": "수원연화장 추모의집",
+    "relation": "동호회 지인"
   },
   {
     "id": 11,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-03-05 23:00",
     "funeralDate": "2025-03-08 07:00",
     "place": "나주애항장례식장 202호",
     "name": "故 강남원",
     "genderAge": "남, 향년 67세",
     "family": "아들 강성준",
-    "burialPlace": "강씨묘 선산"
+    "burialPlace": "강씨묘 선산",
+    "relation": "직장 동료"
   },
   {
     "id": 12,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-04-25 20:00",
     "funeralDate": "2025-04-28 08:00",
     "place": "서울대학교병원장례식장 8호실",
     "name": "故 우일랑",
     "genderAge": "남, 향년 87세",
     "family": "딸 우영선 / 손자 한재완 등",
-    "burialPlace": "서울시립승화원"
+    "burialPlace": "서울시립승화원",
+    "relation": "친척"
   },
   {
     "id": 13,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-08-02",
     "funeralDate": "2025-08-04 11:00",
     "place": "국민건강보험공단 일산병원 장례식장 2호실",
     "name": "故 한지훈",
     "genderAge": "남, 41세",
     "family": "부 한원섭 / 모 김창희 / 동생 한정선 등",
-    "burialPlace": "서울시립승화원"
+    "burialPlace": "서울시립승화원",
+    "relation": "동호회 지인"
   },
   {
     "id": 14,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-08-12",
-    "funeralDate": "2025-09-15 09:30",
+    "funeralDate": "2025-08-15 09:30",
     "place": "보훈공단 중앙보훈병원 장례식장 2층5호",
     "name": "故 한윤기",
     "genderAge": "남, 91세",
     "family": "배우자 이영선 / 딸 한영신·한영화 등",
-    "burialPlace": "성남시장례문화사업소 -> 국립이천호국원"
+    "burialPlace": "성남시장례문화사업소 -> 국립이천호국원",
+    "relation": "학교선후배"
   },
   {
     "id": 15,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-09-23 13:30",
     "funeralDate": "2025-09-25 11:30",
     "place": "배성병원장례식장 1층 대특실",
     "name": "故 남종수",
     "genderAge": "남, 향년 85세",
     "family": "딸 남진혜 / 손자 김상웅",
-    "burialPlace": "명복공원"
+    "burialPlace": "명복공원",
+    "relation": "직장 동료"
   },
   {
     "id": 16,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-10-20",
     "funeralDate": "2025-10-23 09:00",
     "place": "삼성서울병원장례식장 19호실",
     "name": "故 양명자",
     "genderAge": "연령 미기재",
     "family": "상주 김대영 / 며느리 김경애 / 딸 김은영 등",
-    "burialPlace": "성남장례문화사업소"
+    "burialPlace": "성남장례문화사업소",
+    "relation": "친척"
   },
   {
     "id": 17,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-11-09",
     "funeralDate": "2025-11-12 09:00",
     "place": "의정부 을지대학교병원장례식장 6호실",
     "name": "故 신강흥",
     "genderAge": "향년 82세",
     "family": "딸 신정아 / 아들 신광호·신기호",
-    "burialPlace": "납골당/봉안당"
+    "burialPlace": "납골당/봉안당",
+    "relation": "교회 지인"
   },
   {
     "id": 18,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-11-13 19:35",
     "funeralDate": "2025-11-15 05:30",
     "place": "쉴낙원 지하3호실",
     "name": "故 박형남",
     "genderAge": "여, 향년 70세",
     "family": "딸 최선화·최화성·최화옥·최화영",
-    "burialPlace": "인천가족공원 -> 광명메모리얼파크"
+    "burialPlace": "인천가족공원 -> 광명메모리얼파크",
+    "relation": "동호회 지인"
   },
   {
     "id": 19,
     "type": "obituary",
-    "category": "외부 빈소",
+    "typeLabel": "조사",
     "diedDate": "2025-11-25",
     "funeralDate": "2025-11-27 07:00",
     "place": "구례산림조합장례식장 / 구례장례식장",
     "name": "故 박춘자",
     "genderAge": "연령 미기재",
     "family": "딸 심영숙·심경희·심정은·심육남 / 아들 심상실·심성섭·심상설 등",
-    "burialPlace": "전남 구례군 마산면 황전리"
+    "burialPlace": "전남 구례군 마산면 황전리",
+    "relation": "친척"
   },
   {
     "id": 20,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 1월 4일 토요일 오후 12시 30분",
+    "typeLabel": "경사",
+    "dateTime": "2025-01-04 12:30",
     "location": "라한셀렉트 경주 다이너스티홀",
     "groom": "이정민",
     "bride": "김아라",
     "family": "신랑 이정민 ♡ 신부 김아라",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "직장 동료"
   },
   {
     "id": 21,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 1월 19일 일요일 오후 1시 20분",
+    "typeLabel": "경사",
+    "dateTime": "2025-01-19 13:20",
     "location": "해군호텔W웨딩홀 별관 세인트홀",
     "groom": "명경규",
     "bride": "고유경",
     "family": "신랑 명경규 ♡ 신부 고유경",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "학교선후배"
   },
   {
     "id": 22,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 4월 27일 일요일 오후 1시 20분",
+    "typeLabel": "경사",
+    "dateTime": "2025-04-27 13:20",
     "location": "더컨벤션 잠실 그랜드볼룸홀",
     "groom": "조희준",
     "bride": "연희",
     "family": "신랑 조희준 ♡ 신부 연희",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "교회 지인"
   },
   {
     "id": 23,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 5월 10일 토요일 오후 12시 40분",
+    "typeLabel": "경사",
+    "dateTime": "2025-05-10 12:40",
     "location": "라마다 서울 신도림 호텔 하늘정원홀",
     "groom": "윤상필",
     "bride": "현새롬",
     "family": "신랑 윤상필 ♡ 신부 현새롬",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "직장 동료"
   },
   {
     "id": 24,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 7월 13일 일요일 오후 1시",
+    "typeLabel": "경사",
+    "dateTime": "2025-07-13 13:00",
     "location": "러브탑 웨딩홀",
     "groom": "하지성",
     "bride": "이시영",
     "family": "신랑 하지성 ♡ 신부 이시영",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "동호회 지인"
   },
   {
     "id": 25,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 12월 6일 토요일 오전 11시",
+    "typeLabel": "경사",
+    "dateTime": "2025-12-06 11:00",
     "location": "스카이웨딩컨벤션 노블리스홀",
     "groom": "이도훈",
     "bride": "정다영",
     "family": "신랑 이도훈 ♡ 신부 정다영",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "학교선후배"
   },
   {
     "id": 26,
     "type": "wedding",
-    "category": "결혼",
-    "dateTime": "2025년 12월 27일 토요일 오후 2시",
+    "typeLabel": "경사",
+    "dateTime": "2025-12-27 14:00",
     "location": "히든베이호텔 그랜드볼룸홀",
     "groom": "이주찬",
     "bride": "전유림",
     "family": "신랑 이주찬 ♡ 신부 전유림",
-    "burialPlace": "-"
+    "burialPlace": "-",
+    "relation": "친척"
   }
 ]
