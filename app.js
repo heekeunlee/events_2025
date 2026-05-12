@@ -24,6 +24,15 @@ function renderSections(data) {
     renderSingleTable(obituaries, obituaryContainer, '조사');
 }
 
+function getAmount(relation) {
+    if (!relation) return '-';
+    const rel = relation.trim();
+    if (rel.includes('친척')) return '300,000';
+    if (rel.includes('직장 동료') || rel.includes('교회 지인')) return '150,000';
+    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) return '100,000';
+    return '100,000'; // 기본값
+}
+
 function renderSingleTable(items, container, typeLabel) {
     if (!container) return;
     if (items.length === 0) {
@@ -47,18 +56,21 @@ function renderSingleTable(items, container, typeLabel) {
         return (parseInt(aVal[1]) * 100 + parseInt(aVal[2])) - (parseInt(bVal[1]) * 100 + parseInt(bVal[2]));
     });
 
+    const moneyColumnTitle = typeLabel === '경사' ? '축의금' : '부의금';
+
     let tableHtml = `
         <table>
             <thead>
                 <tr>
                     <th style="width: 50px;">No</th>
-                    <th style="width: 80px;">구분</th>
+                    <th style="width: 70px;">구분</th>
                     <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
-                    ${typeLabel === '조사' ? '<th style="width: 120px;">성별/연령</th>' : ''}
+                    ${typeLabel === '조사' ? '<th style="width: 100px;">성별/연령</th>' : ''}
                     <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
                     <th>장소</th>
                     <th style="width: 100px;">관계</th>
-                    <th style="width: 80px; text-align: center;">첨부파일</th>
+                    <th style="width: 70px; text-align: center;">첨부</th>
+                    <th style="width: 110px; text-align: right;">${moneyColumnTitle}</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,6 +85,8 @@ function renderSingleTable(items, container, typeLabel) {
             const attachmentHtml = item.attachment 
                 ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="이미지 보기">📎</span>` 
                 : '-';
+            
+            const amount = getAmount(item.relation);
 
             tableHtml += `
                 <tr onclick="showDetail(${item.id})">
@@ -84,6 +98,7 @@ function renderSingleTable(items, container, typeLabel) {
                     <td>${item.type === 'wedding' ? item.location : item.place}</td>
                     <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
                     <td style="text-align: center;">${attachmentHtml}</td>
+                    <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${amount}</td>
                 </tr>
             `;
         });
@@ -117,6 +132,10 @@ function showDetail(id) {
                 <span class="info-label">장소</span>
                 <span class="info-value">${item.location}</span>
             </div>
+            <div class="modal-detail-item">
+                <span class="info-label">축의금</span>
+                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${getAmount(item.relation)}원</span>
+            </div>
         `;
     } else {
         modalBody.innerHTML = `
@@ -130,6 +149,10 @@ function showDetail(id) {
                     <span class="info-label">별세일</span>
                     <span class="info-value">${item.diedDate}</span>
                 </div>
+            </div>
+            <div class="modal-detail-item">
+                <span class="info-label">부의금</span>
+                <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${getAmount(item.relation)}원</span>
             </div>
             <div class="modal-detail-item">
                 <span class="info-label">유가족</span>
