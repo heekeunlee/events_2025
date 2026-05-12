@@ -7,7 +7,7 @@ async function init() {
         allData = await response.json();
         
         renderSections(allData);
-        setupModal();
+        setupModals();
     } catch (error) {
         console.error('Error loading data:', error);
     }
@@ -57,19 +57,23 @@ function renderSingleTable(items, container, typeLabel) {
                     ${typeLabel === '조사' ? '<th style="width: 120px;">성별/연령</th>' : ''}
                     <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
                     <th>장소</th>
-                    <th style="width: 120px;">관계</th>
+                    <th style="width: 100px;">관계</th>
+                    <th style="width: 80px; text-align: center;">첨부파일</th>
                 </tr>
             </thead>
             <tbody>
     `;
 
-    let globalIndex = 1; // 1부터 순차적으로 증가하는 번호
+    let globalIndex = 1;
 
     sortedMonths.forEach(month => {
-        // Extract only the month part for the "구분" column
         const monthOnly = month.split(' ')[1] || month; 
 
         groups[month].forEach(item => {
+            const attachmentHtml = item.attachment 
+                ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="이미지 보기">📎</span>` 
+                : '-';
+
             tableHtml += `
                 <tr onclick="showDetail(${item.id})">
                     <td style="text-align: center;">${globalIndex++}</td>
@@ -79,6 +83,7 @@ function renderSingleTable(items, container, typeLabel) {
                     <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
                     <td>${item.type === 'wedding' ? item.location : item.place}</td>
                     <td style="color: var(--toss-blue); font-weight: 600;">${item.relation || '-'}</td>
+                    <td style="text-align: center;">${attachmentHtml}</td>
                 </tr>
             `;
         });
@@ -149,12 +154,29 @@ function showDetail(id) {
     document.body.style.overflow = 'hidden';
 }
 
-function setupModal() {
+function showImage(filename) {
+    const imageModal = document.getElementById('image-modal');
+    const popupImage = document.getElementById('popup-image');
+    const baseUrl = import.meta.env.BASE_URL || '/';
+    
+    popupImage.src = `${baseUrl}${filename}`;
+    imageModal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function setupModals() {
     const modal = document.getElementById('modal');
+    const imageModal = document.getElementById('image-modal');
     const closeBtn = document.querySelector('.close-button');
+    const closeImageBtn = document.getElementById('close-image');
     
     closeBtn.onclick = () => {
         modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    };
+    
+    closeImageBtn.onclick = () => {
+        imageModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     };
     
@@ -163,8 +185,13 @@ function setupModal() {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
+        if (event.target == imageModal) {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
     };
 }
 
 window.showDetail = showDetail;
+window.showImage = showImage;
 document.addEventListener('DOMContentLoaded', init);
