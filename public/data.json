@@ -140,7 +140,8 @@
     "genderAge": "남, 향년 67세",
     "family": "아들 강성준",
     "burialPlace": "강씨묘 선산",
-    "relation": "직장 동료"
+    "relation": "직장 동료",
+    "attachment": "강남원 부고.png"
   },
   {
     "id": 12,
@@ -153,7 +154,8 @@
     "genderAge": "남, 향년 87세",
     "family": "딸 우영선 / 손자 한재완 등",
     "burialPlace": "서울시립승화원",
-    "relation": "친척"
+    "relation": "친척",
+    "attachment": "우일랑 부고.png"
   },
   {
     "id": 13,
@@ -192,7 +194,8 @@
     "genderAge": "남, 향년 85세",
     "family": "딸 남진혜 / 손자 김상웅",
     "burialPlace": "명복공원",
-    "relation": "직장 동료"
+    "relation": "직장 동료",
+    "attachment": "남종수 부고.png"
   },
   {
     "id": 16,
@@ -231,7 +234,8 @@
     "genderAge": "여, 향년 70세",
     "family": "딸 최선화·최화성·최화옥·최화영",
     "burialPlace": "인천가족공원 -> 광명메모리얼파크",
-    "relation": "동호회 지인"
+    "relation": "동호회 지인",
+    "attachment": "박형남 부고.png"
   },
   {
     "id": 19,
@@ -304,7 +308,8 @@
     "bride": "이시영",
     "family": "신랑 하지성 ♡ 신부 이시영",
     "burialPlace": "-",
-    "relation": "동호회 지인"
+    "relation": "동호회 지인",
+    "attachment": "하지성_이시영.jpeg"
   },
   {
     "id": 25,
@@ -316,7 +321,8 @@
     "bride": "정다영",
     "family": "신랑 이도훈 ♡ 신부 정다영",
     "burialPlace": "-",
-    "relation": "학교선후배"
+    "relation": "학교선후배",
+    "attachment": "이도훈_정다영.png"
   },
   {
     "id": 26,
