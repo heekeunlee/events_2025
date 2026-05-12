@@ -2,7 +2,8 @@ let obituaries = [];
 
 async function init() {
     try {
-        const response = await fetch('data.json');
+        const baseUrl = import.meta.env.BASE_URL || '/';
+        const response = await fetch(`${baseUrl}data.json`);
         obituaries = await response.json();
         renderObituaries(obituaries);
         
