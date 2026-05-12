@@ -69,12 +69,6 @@ function renderSingleTable(items, container, typeLabel) {
         // Extract only the month part for the "구분" column
         const monthOnly = month.split(' ')[1] || month; 
 
-        tableHtml += `
-            <tr class="month-divider">
-                <td colspan="${typeLabel === '조사' ? 7 : 6}">${month}</td>
-            </tr>
-        `;
-
         groups[month].forEach(item => {
             tableHtml += `
                 <tr onclick="showDetail(${item.id})">
