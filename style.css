@@ -98,25 +98,37 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: fixed; /* Fix layout to prevent overflow */
+    table-layout: auto; /* Change to auto for better spacing */
+}
+
+th, td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #F9FAFB;
 }
 
 th {
     text-align: left;
-    padding: 16px 12px;
     color: var(--toss-text-muted);
-    font-size: 14px;
     font-weight: 500;
     border-bottom: 1px solid var(--toss-border);
 }
 
+/* Column Width Optimization */
+th:nth-child(1), td:nth-child(1) { width: 40px; text-align: center; } /* No */
+th:nth-child(2), td:nth-child(2) { width: 140px; } /* Name */
+th:nth-child(3), td:nth-child(3) { width: 80px; } /* Type */
+th:nth-child(4), td:nth-child(4) { width: 150px; } /* Date */
+th:nth-child(5), td:nth-child(5) { width: 160px; } /* Relation */
+th:nth-child(6), td:nth-child(6) { width: auto; } /* Location (Flexible) */
+th:nth-child(7), td:nth-child(7) { width: 100px; text-align: right; } /* Amount */
+th:nth-child(8), td:nth-child(8) { width: 220px; } /* Remarks */
+th:nth-child(9), td:nth-child(9) { width: 60px; text-align: center; } /* Attach */
+
 td {
-    padding: 14px 12px;
-    font-size: 14px;
-    border-bottom: 1px solid #F9FAFB;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Handle overflow gracefully */
+    text-overflow: ellipsis;
 }
 
 /* Specific cell behavior to prevent "popping out" */

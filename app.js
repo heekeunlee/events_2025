@@ -93,7 +93,7 @@ function renderUnifiedTable(data) {
             <tr onclick="showDetail(${item.id})">
                 <td style="text-align: center; color: var(--toss-text-muted);">${index + 1}</td>
                 <td style="font-weight: 700; color: var(--toss-text-main);">${nameDisplay}</td>
-                <td style="font-weight: 600; color: ${item.type === 'wedding' ? 'var(--toss-blue)' : '#F04452'};">${typeLabel}</td>
+                <td style="font-weight: 600;">${typeLabel}</td>
                 <td>${dateStr}</td>
                 <td>${item.relation || '-'}</td>
                 <td>${location}</td>
