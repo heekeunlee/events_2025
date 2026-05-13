@@ -8,6 +8,7 @@ async function init() {
         
         renderSections(allData);
         setupModals();
+        setupExportButtons();
     } catch (error) {
         console.error('Error loading data:', error);
     }
@@ -37,26 +38,12 @@ function getAmountValue(item) {
     const rel = item.relation.trim();
     const id = item.id;
     
-    // --- CALCULATION TO REACH EXACTLY 5,300,000 ---
-    // Target Increase from 5,100,000: +200,000
-    
-    // 1. Relatives (5 items) @ 300k = 1,500k
     if (rel.includes('친척')) return 300000;
-    
-    // 2. Work/Church (8 items) 
-    // All @ 200k = 1,600k
     if (rel.includes('직장 동료') || rel.includes('교회 지인')) return 200000;
-    
-    // 3. School/Club/Other (13 items)
-    // Base 150k * 13 = 1,950k
-    // Total so far: 1,500 + 1,600 + 1,950 = 5,050,000
-    // Need 250k more. Increase 5 items in this group by 50k (to 200k).
-    // Target IDs for increase: 4, 5, 6, 9, 10
     if (rel.includes('학교선후배') || rel.includes('동호회 지인')) {
         if ([4, 5, 6, 9, 10].includes(id)) return 200000; 
         return 150000;
     }
-    
     return 150000;
 }
 
@@ -178,9 +165,50 @@ function renderSingleTable(items, container, typeLabel) {
 function renderTotalSummary(data) {
     const totalAmountElement = document.getElementById('total-amount');
     if (!totalAmountElement) return;
-    
     const total = data.reduce((acc, item) => acc + getAmountValue(item), 0);
     totalAmountElement.textContent = formatNumber(total) + '원';
+}
+
+function setupExportButtons() {
+    const excelBtn = document.getElementById('export-excel');
+    const pdfBtn = document.getElementById('export-pdf');
+
+    excelBtn.onclick = () => {
+        const dataForExcel = allData.map((item, index) => {
+            const amount = getAmountValue(item);
+            return {
+                '번호': index + 1,
+                '유형': item.type === 'wedding' ? '결혼' : '부고',
+                '대상/고인': item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name,
+                '날짜': item.type === 'wedding' ? item.dateTime : item.diedDate,
+                '장소': item.type === 'wedding' ? item.location : item.place,
+                '관계': item.relation,
+                '금액': amount
+            };
+        });
+
+        const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "2025 경조사");
+        
+        // 탐색기를 통한 저장 (브라우저 기본 다운로드 동작)
+        XLSX.writeFile(workbook, "2025_경조사_기록.xlsx");
+    };
+
+    pdfBtn.onclick = () => {
+        const element = document.getElementById('app');
+        const opt = {
+            margin: 10,
+            filename: '2025_경조사_기록.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // UI 버튼들은 PDF에 포함되지 않도록 임시 숨김 처리 등은 style.css의 @media print에서 처리됨
+        // html2pdf는 CSS의 @media print를 어느 정도 따르지만 명시적인 설정이 필요할 수 있음
+        html2pdf().set(opt).from(element).save();
+    };
 }
 
 function showDetail(id) {
@@ -273,12 +301,10 @@ function setupModals() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     };
-    
     closeImageBtn.onclick = () => {
         imageModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     };
-    
     window.onclick = (event) => {
         if (event.target == modal) {
             modal.style.display = 'none';

@@ -54,25 +54,47 @@ h1 {
     vertical-align: middle;
 }
 
-.print-button {
-    background-color: var(--toss-blue);
-    color: white;
-    border: none;
-    padding: 12px 24px;
+.button-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-button {
+    padding: 10px 16px;
     border-radius: 12px;
+    font-size: 14px;
     font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 100, 255, 0.2);
+    border: none;
 }
 
-.print-button:hover {
+.pdf-btn {
+    background-color: #FEEBEB;
+    color: #F04452;
+}
+
+.excel-btn {
+    background-color: #EBFEEF;
+    color: #1FB881;
+}
+
+.print-btn {
+    background-color: var(--toss-blue);
+    color: white;
+}
+
+.action-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 100, 255, 0.3);
+    filter: brightness(0.95);
+}
+
+.action-button svg {
+    flex-shrink: 0;
 }
 
 .section-title {
@@ -319,7 +341,7 @@ tr:hover td {
         width: 100%;
         padding: 0;
     }
-    .print-button, .close-button, .close-image-button, .modal, .attachment-icon {
+    .action-button, .close-button, .close-image-button, .modal, .attachment-icon {
         display: none !important;
     }
     .main-card, .total-summary-card, .gallery-item {
