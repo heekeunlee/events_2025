@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200"> <!-- Force PC width on mobile as per user request -->
-    <title>2025년 경조사 기록</title>
+    <title>사업 필요 경비 (2025)</title>
     <link rel="stylesheet" href="./style.css">
     <!-- Libraries for Excel and PDF export -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -13,7 +13,7 @@
     <div id="app">
         <header>
             <div class="container header-content">
-                <h1>2025년 경조사 기록 <span class="header-subtext">(우지커피 광교상현역점, 대표 이건경)</span></h1>
+                <h1>사업 필요 경비 (2025) <span class="header-subtext">(우지커피 광교상현역점, 대표 이건경)</span></h1>
                 <div class="button-group">
                     <button id="export-pdf" class="action-button pdf-btn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
@@ -32,29 +32,22 @@
         </header>
 
         <main class="container">
-            <section id="wedding-section">
-                <h2 class="section-title">✨ 경사 (결혼식) - 총 7건</h2>
-                <div id="wedding-container" class="main-card">
-                    <!-- Table injected here -->
-                </div>
-            </section>
-
-            <section id="obituary-section">
-                <h2 class="section-title">🕯️ 조사 (장례식) - 총 19건</h2>
-                <div id="obituary-container" class="main-card">
-                    <!-- Table injected here -->
+            <section id="main-section">
+                <h2 id="total-count-title" class="section-title">전체 경비 내역</h2>
+                <div id="main-table-container" class="main-card">
+                    <!-- Unified table will be injected here -->
                 </div>
             </section>
 
             <section id="total-summary-section" class="total-summary-card">
                 <div class="summary-item">
-                    <span class="summary-label">2025년 전체 경조사 합계</span>
+                    <span class="summary-label">2025년 전체 사업 경비 합계</span>
                     <span id="total-amount" class="summary-value">0원</span>
                 </div>
             </section>
 
             <section id="gallery-section" class="print-page-break">
-                <h2 class="section-title">🖼️ 첨부파일 아카이브</h2>
+                <h2 class="section-title">🖼️ 증빙 서류 아카이브 (청첩장/부고)</h2>
                 <div id="image-gallery" class="gallery-grid">
                     <!-- Images injected here -->
                 </div>

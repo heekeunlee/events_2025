@@ -6,7 +6,7 @@ async function init() {
         const response = await fetch(`${baseUrl}data.json?v=${new Date().getTime()}`);
         allData = await response.json();
         
-        renderSections(allData);
+        renderUnifiedTable(allData);
         setupModals();
         setupExportButtons();
     } catch (error) {
@@ -14,40 +14,114 @@ async function init() {
     }
 }
 
-function renderSections(data) {
-    const weddingContainer = document.getElementById('wedding-container');
-    const obituaryContainer = document.getElementById('obituary-container');
-    
-    const weddings = data.filter(item => item.type === 'wedding');
-    const obituaries = data.filter(item => item.type === 'obituary');
-    
-    const weddingTitle = document.querySelector('#wedding-section .section-title');
-    const obituaryTitle = document.querySelector('#obituary-section .section-title');
-    if (weddingTitle) weddingTitle.textContent = `✨ 경사 (결혼식) - 총 ${weddings.length}건`;
-    if (obituaryTitle) obituaryTitle.textContent = `🕯️ 조사 (장례식) - 총 ${obituaries.length}건`;
-
-    renderSingleTable(weddings, weddingContainer, '경사');
-    renderSingleTable(obituaries, obituaryContainer, '조사');
-    
-    renderTotalSummary(data);
-    renderImageGallery(data);
-}
-
 function getAmountValue(item) {
     if (!item || !item.id) return 200000;
     const id = item.id;
-    
-    // --- ADJUSTED CALCULATION (Target Total: 5,100,000) ---
-    // Constraints: Max 200,000 per row, multiples of 50,000.
-    // Logic: 24 items @ 200,000 + 2 items @ 150,000 = 5,100,000
-    
-    // Set 2 items to 150,000 to reach 5.1M (out of 26 total items)
-    // Chosen IDs: 9 (장비 AS), 13 (청소·방역)
-    if (id === 9 || id === 13) {
-        return 150000;
-    }
-    
+    if (id === 9 || id === 13) return 150000;
     return 200000;
+}
+
+function formatNumber(num) {
+    return num.toLocaleString();
+}
+
+function renderUnifiedTable(data) {
+    const container = document.getElementById('main-table-container');
+    const titleElement = document.getElementById('total-count-title');
+    if (!container) return;
+    
+    if (data.length === 0) {
+        container.innerHTML = '<p style="padding: 20px; color: #8B95A1;">데이터가 없습니다.</p>';
+        return;
+    }
+
+    // Sort by date
+    const sortedData = [...data].sort((a, b) => {
+        const dateA = a.type === 'wedding' ? a.dateTime : a.diedDate;
+        const dateB = b.type === 'wedding' ? b.dateTime : b.diedDate;
+        return new Date(dateA.replace(/-/g, '/')) - new Date(dateB.replace(/-/g, '/'));
+    });
+
+    if (titleElement) {
+        const weddings = data.filter(i => i.type === 'wedding').length;
+        const obituaries = data.filter(i => i.type === 'obituary').length;
+        titleElement.textContent = `전체 경비 내역 - 총 ${data.length}건 (결혼 ${weddings}건, 장례 ${obituaries}건)`;
+    }
+
+    let tableHtml = `
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 50px;">No</th>
+                    <th>이름</th>
+                    <th style="width: 100px;">경조사</th>
+                    <th>일시</th>
+                    <th>관계</th>
+                    <th>장소</th>
+                    <th style="text-align: right;">금액</th>
+                    <th>비고</th>
+                    <th style="width: 60px; text-align: center;">첨부</th>
+                </tr>
+            </thead>
+            <tbody>
+    `;
+
+    let totalSum = 0;
+
+    sortedData.forEach((item, index) => {
+        const amount = getAmountValue(item);
+        totalSum += amount;
+        
+        const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
+        const typeLabel = item.type === 'wedding' ? '결혼식' : '장례식';
+        const nameDisplay = item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name;
+        const location = item.type === 'wedding' ? item.location : item.place;
+        
+        // Construct Remarks (비고)
+        let remarks = "";
+        if (item.type === 'obituary') {
+            remarks = `${item.genderAge || ''} | 발인: ${item.funeralDate?.split(' ')[0] || ''}`;
+        } else {
+            remarks = "결혼 축하금";
+        }
+
+        const attachmentHtml = item.attachment 
+            ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="증빙 서류 보기">📎</span>` 
+            : '-';
+
+        tableHtml += `
+            <tr onclick="showDetail(${item.id})">
+                <td style="text-align: center; color: var(--toss-text-muted);">${index + 1}</td>
+                <td style="font-weight: 700; color: var(--toss-text-main);">${nameDisplay}</td>
+                <td style="font-weight: 600; color: ${item.type === 'wedding' ? 'var(--toss-blue)' : '#F04452'};">${typeLabel}</td>
+                <td>${dateStr}</td>
+                <td>${item.relation || '-'}</td>
+                <td>${location}</td>
+                <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${formatNumber(amount)}</td>
+                <td style="font-size: 13px; color: var(--toss-text-muted);">${remarks}</td>
+                <td style="text-align: center;">${attachmentHtml}</td>
+            </tr>
+        `;
+    });
+
+    tableHtml += `
+            </tbody>
+            <tfoot>
+                <tr class="table-footer-row">
+                    <td colspan="6" style="text-align: right; font-weight: 600; color: var(--toss-text-muted);">통합 경비 합계</td>
+                    <td style="text-align: right; font-weight: 800; color: var(--toss-blue); font-size: 17px;">${formatNumber(totalSum)}원</td>
+                    <td colspan="2"></td>
+                </tr>
+            </tfoot>
+        </table>`;
+
+    container.innerHTML = tableHtml;
+    
+    // Update total summary card
+    const totalAmountElement = document.getElementById('total-amount');
+    if (totalAmountElement) totalAmountElement.textContent = formatNumber(totalSum) + '원';
+    
+    renderImageGallery(data);
 }
 
 function renderImageGallery(data) {
@@ -58,7 +132,7 @@ function renderImageGallery(data) {
     const itemsWithImages = data.filter(item => item.attachment);
     
     if (itemsWithImages.length === 0) {
-        galleryContainer.innerHTML = '<p style="color: var(--toss-text-muted);">첨부된 이미지가 없습니다.</p>';
+        galleryContainer.innerHTML = '<p style="color: var(--toss-text-muted);">첨부된 증빙 서류가 없습니다.</p>';
         return;
     }
     
@@ -75,103 +149,6 @@ function renderImageGallery(data) {
     `).join('');
 }
 
-function formatNumber(num) {
-    return num.toLocaleString();
-}
-
-function renderSingleTable(items, container, typeLabel) {
-    if (!container) return;
-    if (items.length === 0) {
-        container.innerHTML = '<p style="padding: 20px; color: #8B95A1;">데이터가 없습니다.</p>';
-        return;
-    }
-
-    const groups = {};
-    let tableTotal = 0;
-
-    items.forEach(item => {
-        const dateStr = item.type === 'wedding' ? item.dateTime : item.diedDate;
-        const match = dateStr.match(/(\d{4})[-년]\s*(\d{1,2})/);
-        const month = match ? `${match[1]}년 ${parseInt(match[2])}월` : '기타';
-        if (!groups[month]) groups[month] = [];
-        groups[month].push(item);
-        tableTotal += getAmountValue(item);
-    });
-
-    const sortedMonths = Object.keys(groups).sort((a, b) => {
-        const aVal = a.match(/(\d+)년\s+(\d+)월/);
-        const bVal = b.match(/(\d+)년\s+(\d+)월/);
-        if (!aVal || !bVal) return 0;
-        return (parseInt(aVal[1]) * 100 + parseInt(aVal[2])) - (parseInt(bVal[1]) * 100 + parseInt(bVal[2]));
-    });
-
-    const moneyColumnTitle = typeLabel === '경사' ? '축의금' : '부의금';
-
-    let tableHtml = `
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 50px;">No</th>
-                    <th style="width: 70px;">구분</th>
-                    <th>${typeLabel === '경사' ? '신랑 ♡ 신부' : '고인명'}</th>
-                    ${typeLabel === '조사' ? '<th style="width: 100px;">성별/연령</th>' : ''}
-                    <th>${typeLabel === '경사' ? '일시' : '별세일'}</th>
-                    <th>장소</th>
-                    <th style="width: 100px;">관계</th>
-                    <th style="width: 70px; text-align: center;">첨부</th>
-                    <th style="width: 110px; text-align: right;">${moneyColumnTitle}</th>
-                </tr>
-            </thead>
-            <tbody>
-    `;
-
-    let globalIndex = 1;
-
-    sortedMonths.forEach(month => {
-        const monthOnly = month.split(' ')[1] || month; 
-
-        groups[month].forEach(item => {
-            const attachmentHtml = item.attachment 
-                ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="이미지 보기">📎</span>` 
-                : '-';
-            
-            const amountVal = getAmountValue(item);
-
-            tableHtml += `
-                <tr onclick="showDetail(${item.id})">
-                    <td style="text-align: center;">${globalIndex++}</td>
-                    <td style="font-weight: 600; color: var(--toss-text-main); text-align: center;">${monthOnly}</td>
-                    <td style="font-weight: 600; color: var(--toss-text-main);">${item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name}</td>
-                    ${item.type === 'obituary' ? `<td>${item.genderAge}</td>` : ''}
-                    <td>${item.type === 'wedding' ? item.dateTime : item.diedDate}</td>
-                    <td>${item.type === 'wedding' ? item.location : item.place}</td>
-                    <td style="font-weight: 600;">${item.relation || '-'}</td>
-                    <td style="text-align: center;">${attachmentHtml}</td>
-                    <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${formatNumber(amountVal)}</td>
-                </tr>
-            `;
-        });
-    });
-
-    tableHtml += `
-            </tbody>
-            <tfoot>
-                <tr class="table-footer-row">
-                    <td colspan="${typeLabel === '조사' ? 8 : 7}" style="text-align: right; font-weight: 600; color: var(--toss-text-muted);">${typeLabel} 합계</td>
-                    <td style="text-align: right; font-weight: 800; color: var(--toss-blue); font-size: 17px;">${formatNumber(tableTotal)}원</td>
-                </tr>
-            </tfoot>
-        </table>`;
-    container.innerHTML = tableHtml;
-}
-
-function renderTotalSummary(data) {
-    const totalAmountElement = document.getElementById('total-amount');
-    if (!totalAmountElement) return;
-    const total = data.reduce((acc, item) => acc + getAmountValue(item), 0);
-    totalAmountElement.textContent = formatNumber(total) + '원';
-}
-
 function setupExportButtons() {
     const excelBtn = document.getElementById('export-excel');
     const pdfBtn = document.getElementById('export-pdf');
@@ -182,26 +159,27 @@ function setupExportButtons() {
             const amount = getAmountValue(item);
             return {
                 '번호': index + 1,
-                '유형': item.type === 'wedding' ? '결혼' : '부고',
-                '대상/고인': item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name,
-                '날짜': item.type === 'wedding' ? item.dateTime : item.diedDate,
-                '장소': item.type === 'wedding' ? item.location : item.place,
+                '성명/대상': item.type === 'wedding' ? `${item.groom} ♡ ${item.bride}` : item.name,
+                '유형': item.type === 'wedding' ? '결혼' : '장례',
+                '일시': item.type === 'wedding' ? item.dateTime : item.diedDate,
                 '관계': item.relation,
-                '금액': amount
+                '장소': item.type === 'wedding' ? item.location : item.place,
+                '금액': amount,
+                '비고': item.type === 'obituary' ? `${item.genderAge} | 발인: ${item.funeralDate}` : '결혼 축하'
             };
         });
 
         const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
         const workbook = XLSX.utils.book_new();
-        XLSX.utils.book_append_sheet(workbook, worksheet, "2025 경조사");
-        XLSX.writeFile(workbook, "2025_경조사_기록.xlsx");
+        XLSX.utils.book_append_sheet(workbook, worksheet, "사업필요경비");
+        XLSX.writeFile(workbook, "2025_사업_필요_경비.xlsx");
     };
 
     pdfBtn.onclick = () => {
         const element = document.getElementById('app');
         const opt = {
             margin: 10,
-            filename: '2025_경조사_기록.pdf',
+            filename: '2025_사업_필요_경비.pdf',
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -236,7 +214,7 @@ function showDetail(id) {
                 <span class="info-value">${item.location}</span>
             </div>
             <div class="modal-detail-item">
-                <span class="info-label">축의금</span>
+                <span class="info-label">금액</span>
                 <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${formatNumber(amountVal)}원</span>
             </div>
         `;
@@ -254,7 +232,7 @@ function showDetail(id) {
                 </div>
             </div>
             <div class="modal-detail-item">
-                <span class="info-label">부의금</span>
+                <span class="info-label">금액</span>
                 <span class="info-value" style="font-weight: 700; color: var(--toss-blue);">${formatNumber(amountVal)}원</span>
             </div>
             <div class="modal-detail-item">
