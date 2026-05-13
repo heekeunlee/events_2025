@@ -52,15 +52,14 @@ function renderUnifiedTable(data) {
         <table>
             <thead>
                 <tr>
-                    <th style="width: 50px;">No</th>
+                    <th style="width: 35px;">No</th>
                     <th>이름</th>
-                    <th style="width: 100px;">경조사</th>
+                    <th style="width: 60px;">경조사</th>
                     <th>일시</th>
                     <th>관계</th>
                     <th>장소</th>
                     <th style="text-align: right;">금액</th>
                     <th>비고</th>
-                    <th style="width: 60px; text-align: center;">첨부</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,10 +84,6 @@ function renderUnifiedTable(data) {
             remarks = "결혼 축하금";
         }
 
-        const attachmentHtml = item.attachment 
-            ? `<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${item.attachment}')" title="증빙 서류 보기">📎</span>` 
-            : '-';
-
         tableHtml += `
             <tr onclick="showDetail(${item.id})">
                 <td style="text-align: center; color: var(--toss-text-muted);">${index + 1}</td>
@@ -99,7 +94,6 @@ function renderUnifiedTable(data) {
                 <td>${location}</td>
                 <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${formatNumber(amount)}</td>
                 <td style="font-size: 13px; color: var(--toss-text-muted);">${remarks}</td>
-                <td style="text-align: center;">${attachmentHtml}</td>
             </tr>
         `;
     });
@@ -110,7 +104,7 @@ function renderUnifiedTable(data) {
                 <tr class="table-footer-row">
                     <td colspan="6" style="text-align: right; font-weight: 600; color: var(--toss-text-muted);">통합 경비 합계</td>
                     <td style="text-align: right; font-weight: 800; color: var(--toss-blue); font-size: 17px;">${formatNumber(totalSum)}원</td>
-                    <td colspan="2"></td>
+                    <td></td>
                 </tr>
             </tfoot>
         </table>`;
