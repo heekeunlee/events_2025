@@ -102,9 +102,10 @@ table {
 }
 
 th, td {
-    padding: 12px 10px; /* Optimized padding for 1-page fit */
-    font-size: 13.5px;   /* Optimized font size for 1-page fit */
+    padding: 12px 8px; /* Slightly tighter padding */
+    font-size: 13px;   /* Consistent font size for better fit */
     border-bottom: 1px solid #F9FAFB;
+    vertical-align: middle;
 }
 
 th {
@@ -114,16 +115,16 @@ th {
     border-bottom: 1px solid var(--toss-border);
 }
 
-/* Precise Column Widths (Total: 1200px) */
-th:nth-child(1), td:nth-child(1) { width: 40px; text-align: center; } 
-th:nth-child(2), td:nth-child(2) { width: 120px; } 
-th:nth-child(3), td:nth-child(3) { width: 65px; } 
-th:nth-child(4), td:nth-child(4) { width: 145px; } 
-th:nth-child(5), td:nth-child(5) { width: 145px; } 
-th:nth-child(6), td:nth-child(6) { width: 180px; } 
-th:nth-child(7), td:nth-child(7) { width: 105px; text-align: right; } /* Widened for sum */
-th:nth-child(8), td:nth-child(8) { width: 340px; } 
-th:nth-child(9), td:nth-child(9) { width: 60px; text-align: center; } 
+/* Optimized Column Widths (Total: 1200px) */
+th:nth-child(1), td:nth-child(1) { width: 35px; text-align: center; } /* No */
+th:nth-child(2), td:nth-child(2) { width: 110px; } /* Name */
+th:nth-child(3), td:nth-child(3) { width: 60px; text-align: center; } /* Type */
+th:nth-child(4), td:nth-child(4) { width: 155px; } /* Date - Widened */
+th:nth-child(5), td:nth-child(5) { width: 145px; } /* Relation */
+th:nth-child(6), td:nth-child(6) { width: 220px; } /* Location - Widened */
+th:nth-child(7), td:nth-child(7) { width: 90px; text-align: right; } /* Amount */
+th:nth-child(8), td:nth-child(8) { width: 335px; } /* Remarks */
+th:nth-child(9), td:nth-child(9) { width: 50px; text-align: center; } /* Attach */
 
 td {
     white-space: nowrap;
@@ -132,11 +133,15 @@ td {
 }
 
 td:nth-child(2) { font-weight: 600; }
-td:nth-child(8) { 
+
+/* Allow wrapping for long text to avoid '...' */
+td:nth-child(6), td:nth-child(8) { 
     white-space: normal;
     word-break: keep-all;
-    font-size: 12px;
+    line-height: 1.4;
 }
+
+td:nth-child(8) { font-size: 12px; }
 
 /* Fix Sum Overflow (Red Circle Issue) */
 .table-footer-row td {
