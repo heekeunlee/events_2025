@@ -10,7 +10,7 @@
     "genderAge": "95세",
     "family": "고윤제A 성도 모친상 / 이선주 성도 시모상",
     "burialPlace": "수원시연화장 승화원 -> 대전현충원",
-    "relation": "교회 지인"
+    "relation": "단골 단체 고객(교회)"
   },
   {
     "id": 2,
@@ -23,7 +23,7 @@
     "genderAge": "남, 98세",
     "family": "아들 장영수 / 딸 장서현·장영애·장은설 / 외손녀 장주원",
     "burialPlace": "서울 동작구 국립현충원",
-    "relation": "친척"
+    "relation": "매장 직원"
   },
   {
     "id": 3,
@@ -36,7 +36,7 @@
     "genderAge": "남, 43세",
     "family": "상주 박은미·김연석·김형기",
     "burialPlace": "승화원 -> 추모의 집",
-    "relation": "직장 동료"
+    "relation": "협력 점주"
   },
   {
     "id": 4,
@@ -49,7 +49,7 @@
     "genderAge": "남, 60세",
     "family": "배우자 김교성 / 상주 소병현·소병희",
     "burialPlace": "석포리 선영",
-    "relation": "동호회 지인"
+    "relation": "원두 공급업체"
   },
   {
     "id": 5,
@@ -62,7 +62,7 @@
     "genderAge": "여, 87세",
     "family": "아들 김재연 / 딸 김영희·김점순·김미경 등",
     "burialPlace": "대전현충원",
-    "relation": "학교선후배"
+    "relation": "납품업체"
   },
   {
     "id": 6,
@@ -75,7 +75,7 @@
     "genderAge": "향년 68세",
     "family": "지선영 삼성증권 영업지점장 모친상",
     "burialPlace": "수원연화장 납골당/추모의집",
-    "relation": "직장 동료"
+    "relation": "가맹본부"
   },
   {
     "id": 7,
@@ -88,7 +88,7 @@
     "genderAge": "남, 향년 63세",
     "family": "배우자 김현숙 / 아들 김영재·김영승",
     "burialPlace": "장지: 수원시연화장",
-    "relation": "친척"
+    "relation": "건물 관리사무소 관계자"
   },
   {
     "id": 8,
@@ -101,7 +101,7 @@
     "genderAge": "여, 72세",
     "family": "배우자 주원영 / 아들 주종열·주종민 등",
     "burialPlace": "서울추모공원 -> 수원시연화장 추모의집",
-    "relation": "교회 지인"
+    "relation": "단골 단체 고객(은행)"
   },
   {
     "id": 9,
@@ -114,7 +114,7 @@
     "genderAge": "남, 75세",
     "family": "배우자 서순복 / 딸 정혜선·정혜경 등",
     "burialPlace": "수원연화장 -> 국립서울현충원",
-    "relation": "학교선후배"
+    "relation": "장비/커피머신 AS업체"
   },
   {
     "id": 10,
@@ -127,7 +127,7 @@
     "genderAge": "여, 43세",
     "family": "배우자 이상일 / 딸 이서아 / 아들 이서준",
     "burialPlace": "수원연화장 추모의집",
-    "relation": "동호회 지인"
+    "relation": "배달 플랫폼 담당자"
   },
   {
     "id": 11,
@@ -140,7 +140,7 @@
     "genderAge": "남, 향년 67세",
     "family": "아들 강성준",
     "burialPlace": "강씨묘 선산",
-    "relation": "직장 동료",
+    "relation": "광고·마케팅 업체",
     "attachment": "강남원 부고.png"
   },
   {
@@ -154,7 +154,7 @@
     "genderAge": "남, 향년 87세",
     "family": "딸 우영선 / 손자 한재완 등",
     "burialPlace": "서울시립승화원",
-    "relation": "친척",
+    "relation": "사업 자문업체",
     "attachment": "우일랑 부고.png"
   },
   {
@@ -168,7 +168,7 @@
     "genderAge": "남, 41세",
     "family": "부 한원섭 / 모 김창희 / 동생 한정선 등",
     "burialPlace": "서울시립승화원",
-    "relation": "동호회 지인"
+    "relation": "청소·방역 업체"
   },
   {
     "id": 14,
@@ -181,7 +181,7 @@
     "genderAge": "남, 91세",
     "family": "배우자 이영선 / 딸 한영신·한영화 등",
     "burialPlace": "성남시장례문화사업소 -> 국립이천호국원",
-    "relation": "학교선후배"
+    "relation": "인테리어 업체"
   },
   {
     "id": 15,
@@ -194,7 +194,7 @@
     "genderAge": "남, 향년 85세",
     "family": "딸 남진혜 / 손자 김상웅",
     "burialPlace": "명복공원",
-    "relation": "직장 동료",
+    "relation": "단골 단체 고객(학원)",
     "attachment": "남종수 부고.png"
   },
   {
@@ -208,7 +208,7 @@
     "genderAge": "연령 미기재",
     "family": "상주 김대영 / 며느리 김경애 / 딸 김은영 등",
     "burialPlace": "성남장례문화사업소",
-    "relation": "친척"
+    "relation": "원두 공급업체"
   },
   {
     "id": 17,
@@ -221,7 +221,7 @@
     "genderAge": "향년 82세",
     "family": "딸 신정아 / 아들 신광호·신기호",
     "burialPlace": "납골당/봉안당",
-    "relation": "교회 지인"
+    "relation": "납품업체"
   },
   {
     "id": 18,
@@ -234,7 +234,7 @@
     "genderAge": "여, 향년 70세",
     "family": "딸 최선화·최화성·최화옥·최화영",
     "burialPlace": "인천가족공원 -> 광명메모리얼파크",
-    "relation": "동호회 지인",
+    "relation": "가맹본부",
     "attachment": "박형남 부고.png"
   },
   {
@@ -248,7 +248,7 @@
     "genderAge": "연령 미기재",
     "family": "딸 심영숙·심경희·심정은·심육남 / 아들 심상실·심성섭·심상설 등",
     "burialPlace": "전남 구례군 마산면 황전리",
-    "relation": "친척"
+    "relation": "매장 직원"
   },
   {
     "id": 20,
@@ -260,7 +260,7 @@
     "bride": "김아라",
     "family": "신랑 이정민 ♡ 신부 김아라",
     "burialPlace": "-",
-    "relation": "직장 동료"
+    "relation": "단골 단체 고객(은행)"
   },
   {
     "id": 21,
@@ -272,7 +272,7 @@
     "bride": "고유경",
     "family": "신랑 명경규 ♡ 신부 고유경",
     "burialPlace": "-",
-    "relation": "학교선후배"
+    "relation": "협력 점주"
   },
   {
     "id": 22,
@@ -284,7 +284,7 @@
     "bride": "연희",
     "family": "신랑 조희준 ♡ 신부 연희",
     "burialPlace": "-",
-    "relation": "교회 지인"
+    "relation": "단골 단체 고객(교회)"
   },
   {
     "id": 23,
@@ -296,7 +296,7 @@
     "bride": "현새롬",
     "family": "신랑 윤상필 ♡ 신부 현새롬",
     "burialPlace": "-",
-    "relation": "직장 동료"
+    "relation": "인테리어 업체"
   },
   {
     "id": 24,
@@ -308,7 +308,7 @@
     "bride": "이시영",
     "family": "신랑 하지성 ♡ 신부 이시영",
     "burialPlace": "-",
-    "relation": "동호회 지인",
+    "relation": "배달 플랫폼 담당자",
     "attachment": "하지성_이시영.jpeg"
   },
   {
@@ -321,7 +321,7 @@
     "bride": "정다영",
     "family": "신랑 이도훈 ♡ 신부 정다영",
     "burialPlace": "-",
-    "relation": "학교선후배",
+    "relation": "광고·마케팅 업체",
     "attachment": "이도훈_정다영.png"
   },
   {
@@ -334,7 +334,7 @@
     "bride": "전유림",
     "family": "신랑 이주찬 ♡ 신부 전유림",
     "burialPlace": "-",
-    "relation": "친척",
+    "relation": "가맹본부",
     "attachment": "이주찬_전유림.png"
   }
 ]

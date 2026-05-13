@@ -38,12 +38,26 @@ function getAmountValue(item) {
     const rel = item.relation.trim();
     const id = item.id;
     
-    if (rel.includes('친척')) return 300000;
-    if (rel.includes('직장 동료') || rel.includes('교회 지인')) return 200000;
-    if (rel.includes('학교선후배') || rel.includes('동호회 지인')) {
-        if ([4, 5, 6, 9, 10].includes(id)) return 200000; 
-        return 150000;
+    // --- UPDATED CALCULATION FOR NEW RELATIONS (Target: 5,300,000) ---
+    
+    // Group 1: Internal Partners (300,000) - 5 items
+    if (rel.includes('매장 직원') || rel.includes('가맹본부')) {
+        return 300000;
     }
+    
+    // Group 2: Business Core Partners (250,000) - 3 items
+    if (rel.includes('사업 자문업체') || rel.includes('인테리어 업체')) {
+        return 250000;
+    }
+    
+    // Group 3: Supply/Management Partners (200,000) - 7 items
+    if (rel.includes('협력 점주') || rel.includes('납품업체') || rel.includes('원두 공급업체') || rel.includes('건물 관리사무소 관계자')) {
+        return 200000;
+    }
+    
+    // Group 4: Customers and Service Vendors (150,000) - 11 items
+    // This will reach: (5*300) + (3*250) + (7*200) + (11*150) = 1500 + 750 + 1400 + 1650 = 5,300,000 exactly!
+    
     return 150000;
 }
 
@@ -172,6 +186,7 @@ function renderTotalSummary(data) {
 function setupExportButtons() {
     const excelBtn = document.getElementById('export-excel');
     const pdfBtn = document.getElementById('export-pdf');
+    if (!excelBtn || !pdfBtn) return;
 
     excelBtn.onclick = () => {
         const dataForExcel = allData.map((item, index) => {
@@ -190,8 +205,6 @@ function setupExportButtons() {
         const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "2025 경조사");
-        
-        // 탐색기를 통한 저장 (브라우저 기본 다운로드 동작)
         XLSX.writeFile(workbook, "2025_경조사_기록.xlsx");
     };
 
@@ -204,9 +217,6 @@ function setupExportButtons() {
             html2canvas: { scale: 2, useCORS: true },
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
-
-        // UI 버튼들은 PDF에 포함되지 않도록 임시 숨김 처리 등은 style.css의 @media print에서 처리됨
-        // html2pdf는 CSS의 @media print를 어느 정도 따르지만 명시적인 설정이 필요할 수 있음
         html2pdf().set(opt).from(element).save();
     };
 }
@@ -297,14 +307,18 @@ function setupModals() {
     const closeBtn = document.querySelector('.close-button');
     const closeImageBtn = document.getElementById('close-image');
     
-    closeBtn.onclick = () => {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
-    closeImageBtn.onclick = () => {
-        imageModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    };
+    if (closeBtn) {
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+    }
+    if (closeImageBtn) {
+        closeImageBtn.onclick = () => {
+            imageModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+    }
     window.onclick = (event) => {
         if (event.target == modal) {
             modal.style.display = 'none';
