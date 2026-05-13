@@ -134,9 +134,13 @@ td {
 
 td:nth-child(2) { font-weight: 600; }
 
-/* Allow wrapping for long text to avoid '...' */
-td:nth-child(6), td:nth-child(8) { 
-    white-space: normal;
+/* Fixed: Allow wrapping for these columns to show FULL content */
+td:nth-child(4), /* Date */
+td:nth-child(6), /* Location */
+td:nth-child(8)  /* Remarks */ { 
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
     word-break: keep-all;
     line-height: 1.4;
 }
