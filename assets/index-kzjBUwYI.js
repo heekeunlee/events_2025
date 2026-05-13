@@ -2,19 +2,18 @@
         <table>
             <thead>
                 <tr>
-                    <th style="width: 50px;">No</th>
+                    <th style="width: 35px;">No</th>
                     <th>이름</th>
-                    <th style="width: 100px;">경조사</th>
+                    <th style="width: 60px;">경조사</th>
                     <th>일시</th>
                     <th>관계</th>
                     <th>장소</th>
                     <th style="text-align: right;">금액</th>
                     <th>비고</th>
-                    <th style="width: 60px; text-align: center;">첨부</th>
                 </tr>
             </thead>
             <tbody>
-    `,c=0;o.forEach((e,t)=>{let i=n(e);c+=i;let a=e.type===`wedding`?e.dateTime:e.diedDate,o=e.type===`wedding`?`결혼식`:`장례식`,l=e.type===`wedding`?`${e.groom} ♡ ${e.bride}`:e.name,u=e.type===`wedding`?e.location:e.place,d=``;d=e.type===`obituary`?`${e.genderAge||``} | 발인: ${e.funeralDate?.split(` `)[0]||``}`:`결혼 축하금`;let f=e.attachment?`<span class="attachment-icon" onclick="event.stopPropagation(); showImage('${e.attachment}')" title="증빙 서류 보기">📎</span>`:`-`;s+=`
+    `,c=0;o.forEach((e,t)=>{let i=n(e);c+=i;let a=e.type===`wedding`?e.dateTime:e.diedDate,o=e.type===`wedding`?`결혼식`:`장례식`,l=e.type===`wedding`?`${e.groom} ♡ ${e.bride}`:e.name,u=e.type===`wedding`?e.location:e.place,d=``;d=e.type===`obituary`?`${e.genderAge||``} | 발인: ${e.funeralDate?.split(` `)[0]||``}`:`결혼 축하금`,s+=`
             <tr onclick="showDetail(${e.id})">
                 <td style="text-align: center; color: var(--toss-text-muted);">${t+1}</td>
                 <td style="font-weight: 700; color: var(--toss-text-main);">${l}</td>
@@ -24,7 +23,6 @@
                 <td>${u}</td>
                 <td style="text-align: right; font-weight: 700; color: var(--toss-text-main);">${r(i)}</td>
                 <td style="font-size: 13px; color: var(--toss-text-muted);">${d}</td>
-                <td style="text-align: center;">${f}</td>
             </tr>
         `}),s+=`
             </tbody>
@@ -32,7 +30,7 @@
                 <tr class="table-footer-row">
                     <td colspan="6" style="text-align: right; font-weight: 600; color: var(--toss-text-muted);">통합 경비 합계</td>
                     <td style="text-align: right; font-weight: 800; color: var(--toss-blue); font-size: 17px;">${r(c)}원</td>
-                    <td colspan="2"></td>
+                    <td></td>
                 </tr>
             </tfoot>
         </table>`,t.innerHTML=s;let l=document.getElementById(`total-amount`);l&&(l.textContent=r(c)+`원`),a(e)}function a(e){let t=document.getElementById(`image-gallery`);if(!t)return;let n=e.filter(e=>e.attachment);if(n.length===0){t.innerHTML=`<p style="color: var(--toss-text-muted);">첨부된 증빙 서류가 없습니다.</p>`;return}t.innerHTML=n.map(e=>`
