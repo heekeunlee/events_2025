@@ -34,24 +34,20 @@ function renderSections(data) {
 }
 
 function getAmountValue(item) {
-    if (!item || !item.relation) return 100000;
-    const rel = item.relation.trim();
+    if (!item || !item.id) return 200000;
+    const id = item.id;
     
-    // --- UPDATED CALCULATION (Max 200,000, 50k unit) ---
+    // --- ADJUSTED CALCULATION (Target Total: 5,100,000) ---
+    // Constraints: Max 200,000 per row, multiples of 50,000.
+    // Logic: 24 items @ 200,000 + 2 items @ 150,000 = 5,100,000
     
-    // Group 1: Core Internal/Business Partners (200,000)
-    if (rel.includes('매장 직원') || rel.includes('가맹본부') || rel.includes('협력 점주')) {
-        return 200000;
-    }
-    
-    // Group 2: Key Supply/Service Partners (150,000)
-    if (rel.includes('원두 공급업체') || rel.includes('납품업체') || rel.includes('인테리어 업체') || rel.includes('사업 자문업체')) {
+    // Set 2 items to 150,000 to reach 5.1M (out of 26 total items)
+    // Chosen IDs: 9 (장비 AS), 13 (청소·방역)
+    if (id === 9 || id === 13) {
         return 150000;
     }
     
-    // Group 3: General Partners and Regular Customers (100,000)
-    // Includes: 단골 단체 고객, 배달 플랫폼, 광고/마케팅, 건물 관리, 청소/방역, 장비 AS 등
-    return 100000;
+    return 200000;
 }
 
 function renderImageGallery(data) {
