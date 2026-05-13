@@ -18,7 +18,7 @@
             <tr onclick="showDetail(${e.id})">
                 <td style="text-align: center; color: var(--toss-text-muted);">${t+1}</td>
                 <td style="font-weight: 700; color: var(--toss-text-main);">${l}</td>
-                <td style="font-weight: 600; color: ${e.type===`wedding`?`var(--toss-blue)`:`#F04452`};">${o}</td>
+                <td style="font-weight: 600;">${o}</td>
                 <td>${a}</td>
                 <td>${e.relation||`-`}</td>
                 <td>${u}</td>
